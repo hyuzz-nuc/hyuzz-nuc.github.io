@@ -1,0 +1,105 @@
+# 基础站点配置
+baseURL = "https://hyuzz-nuc.github.io/"
+languageCode = "zh-CN"
+title = "星核技术社"
+theme = "PaperMod"
+defaultContentLanguage = "zh"
+enableInlineShortcodes = true
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+paginate = 10
+
+# 菜单配置
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 3
+  [[menu.main]]
+    identifier = "categories"
+    name = "分类"
+    url = "/categories/"
+    weight = 4
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 5
+
+# 核心美化配置
+[params]
+  theme = "auto"
+  # 首页信息
+  homeInfoParams.Title = "Hyuzz 的博客"
+  homeInfoParams.Content = "专注技术分享 · 记录成长点滴\n欢迎来访，一起交流学习～"
+  # 作者信息
+  author = "hyuzz"
+  authorImage = "/images/avatar.png"
+  authorDesc = "一名热爱编程的学习者"
+  # 封面配置
+  cover.enabled = true
+  cover.responsiveImages = true
+  cover.hidden = false
+  # 社交链接
+  socialIcons = [
+    { name = "github", url = "https://github.com/hyuzz-nuc" },
+    { name = "email", url = "mailto:zhy_nuc1114@outlook.com" },
+    { name = "wechat", url = "/images/wechat-qrcode.png" }
+  ]
+  # 功能开关
+  enableSearch = true
+  showReadingTime = true
+  showWordCount = true
+  ShowPostNavLinks = true
+  ShowShareButtons = true
+  ShowToc = true
+  TocOpen = false
+  # 页脚配置
+  footer.showReadingTime = true
+  footer.showWordCount = true
+  footer.copyright = "© 2026 hyuzz. All rights reserved."
+
+# 代码高亮
+[markup]
+  [markup.highlight]
+    codeFences = true
+    hl_Lines = ""
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = false
+    style = "github-dark"
+    tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 4
+    startLevel = 2
+
+# Giscus 评论配置（已填好你的 ID）
+[params.comments]
+  enabled = true
+  type = "giscus"
+[params.comments.giscus]
+  repo = "hyuzz-nuc/hyuzz-nuc.github.io"
+  repoId = "R_kgDORh6uuA"
+  category = "Announcements"
+  categoryId = "DIC_kwDORh6uuM4C3_BA"
+  mapping = "pathname"
+  strict = "0"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "bottom"
+  theme = "preferred_color_scheme"
+  lang = "zh-CN"
