@@ -4,6 +4,7 @@ date: 2026-03-11T20:40:00+08:00
 draft: false
 tags: ["AI", "Skill", "Prompt Engineering"]
 categories: ["技术分享"]
+series: ["AI 工具实战"]
 description: "从 Prompt 到 Skill，2026 年 AI 开发范式的转变"
 ---
 

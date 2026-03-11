@@ -4,6 +4,7 @@ date: 2026-03-11T19:50:00+08:00
 draft: false
 tags: ["AI", "效率工具", "开发工具"]
 categories: ["技术分享"]
+series: ["AI 工具实战"]
 description: "从 IDE 选择到 Rules 配置，一文讲透如何让 AI 成为你的靠谱小弟"
 ---
 

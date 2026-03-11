@@ -12,6 +12,12 @@ buildExpired = false
 enableEmoji = true
 paginate = 10
 
+# Taxonomy 配置（支持 series 合集）
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
 # 菜单配置
 [menu]
   [[menu.main]]
