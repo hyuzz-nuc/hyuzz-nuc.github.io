@@ -49,11 +49,12 @@ body {
    =================================== */
 .home-layout {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 300px;
   gap: 30px;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 30px auto;
   padding: 0 20px;
+  align-items: start;
 }
 
 .main-content {
@@ -184,6 +185,38 @@ body {
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(184, 134, 11, 0.2);
+}
+
+/* ===================================
+   博客统计 - 简约无边框
+   =================================== */
+.stats-simple {
+  padding: 15px 0;
+  margin-bottom: 10px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  gap: 8px;
+}
+
+.stat-label {
+  color: var(--text-gray);
+  white-space: nowrap;
+}
+
+.stat-value {
+  color: var(--primary-gold);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.busuanzi-number {
+  color: var(--primary-gold);
+  font-weight: 600;
 }
 
 /* ===================================
@@ -402,41 +435,39 @@ body {
 }
 
 /* ===================================
-   导航栏社交链接 - 标题旁边
+   导航栏社交链接 - 标题旁边（无边框）
    =================================== */
 .header-social-links {
   display: inline-flex;
-  gap: 10px;
-  margin-left: 20px;
+  gap: 12px;
+  margin-left: 15px;
   vertical-align: middle;
+  align-items: center;
 }
 
 .header-social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
   background: transparent;
-  border: 1px solid var(--border-gold);
-  border-radius: 6px;
+  border: none;
+  cursor: pointer;
   transition: all 0.2s ease;
+  padding: 0;
 }
 
 .header-social-link:hover {
-  background: var(--primary-gold);
-  border-color: var(--dark-gold);
   transform: translateY(-2px);
 }
 
 .header-social-link:hover svg {
-  fill: #fff;
+  fill: var(--primary-gold);
 }
 
 .header-social-link svg {
-  width: 18px;
-  height: 18px;
-  fill: var(--text-dark);
+  width: 20px;
+  height: 20px;
+  fill: var(--text-gray);
   transition: fill 0.2s ease;
 }
 
@@ -514,17 +545,19 @@ body {
 }
 
 .nav {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  gap: 0;
 }
 
 .logo a {
@@ -532,6 +565,7 @@ body {
   color: var(--primary-gold);
   text-decoration: none;
   font-weight: 600;
+  line-height: 1;
 }
 
 #menu {
@@ -562,7 +596,7 @@ body {
    =================================== */
 #theme-toggle {
   background: transparent !important;
-  border: 1px solid var(--border-gold) !important;
+  border: none !important;
   border-radius: 4px !important;
   padding: 5px 8px !important;
   cursor: pointer;
@@ -570,8 +604,7 @@ body {
 }
 
 #theme-toggle:hover {
-  background: var(--primary-gold) !important;
-  border-color: var(--dark-gold) !important;
+  background: rgba(184, 134, 11, 0.1) !important;
 }
 
 #theme-toggle svg {
@@ -580,7 +613,7 @@ body {
 }
 
 #theme-toggle:hover svg {
-  stroke: #fff;
+  stroke: var(--primary-gold);
 }
 
 /* ===================================

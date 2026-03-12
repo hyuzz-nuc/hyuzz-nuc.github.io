@@ -42,6 +42,22 @@
 
   <!-- 右侧边栏 -->
   <aside class="sidebar-right">
+    <!-- 博客统计 -->
+    <div class="stats-simple">
+      <div class="stat-item">
+        <span class="stat-label">📄 文章数量：</span>
+        <span class="stat-value">{{ len .Site.RegularPages }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">👁️ 访问人数：</span>
+        <span id="busuanzi_value_site_uv" class="stat-value busuanzi-number">-</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">📖 总访问量：</span>
+        <span id="busuanzi_value_site_pv" class="stat-value busuanzi-number">-</span>
+      </div>
+    </div>
+
     <!-- 搜索框 -->
     <div class="widget search-widget">
       <h3 class="widget-title">🔍 搜索</h3>
@@ -77,7 +93,6 @@
         {{- end }}
       </ul>
     </div>
-
   </aside>
 </div>
 
