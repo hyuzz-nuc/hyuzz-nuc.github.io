@@ -58,64 +58,68 @@
   </footer>
 
   <!-- Giscus 评论区（支持深色模式切换） -->
-  <div class="giscus-comments" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-light);">
+  <div class="giscus-comments" id="giscus-comments" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-light);">
     <h3 style="margin-bottom: 20px; font-size: 1.2rem; color: var(--primary-gold);">💬 评论区</h3>
-    <script class="giscus-script" src="https://giscus.app/client.js"
-      data-repo="hyuzz-nuc/hyuzz-nuc.github.io"
-      data-repo-id="R_kgDORh6uuA"
-      data-category="Announcements"
-      data-category-id="DIC_kwDORh6uuM4C3_BA"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="bottom"
-      data-theme="light"
-      data-lang="zh-CN"
-      crossorigin="anonymous"
-      async>
-    </script>
   </div>
   
   <script>
-    // Giscus 深色模式切换支持 - 官方推荐方式
-    function updateGiscusTheme() {
-      const isDark = document.documentElement.dataset.theme === 'dark';
-      const theme = isDark ? 'dark' : 'light';
-      
-      // 更新 script 属性
-      const giscusScript = document.querySelector('.giscus-script');
-      if (giscusScript) {
-        giscusScript.setAttribute('data-theme', theme);
+    (function() {
+      // 获取当前主题
+      function getTheme() {
+        return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
       }
       
-      // 发送消息给 iframe（Giscus 官方推荐）
-      const iframe = document.querySelector('iframe.giscus-frame');
-      if (iframe) {
+      // 加载 Giscus
+      function loadGiscus() {
+        const container = document.getElementById('giscus-comments');
+        if (!container || container.querySelector('script')) return;
+        
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.async = true;
+        script.crossOrigin = 'anonymous';
+        script.setAttribute('data-repo', 'hyuzz-nuc/hyuzz-nuc.github.io');
+        script.setAttribute('data-repo-id', 'R_kgDORh6uuA');
+        script.setAttribute('data-category', 'Announcements');
+        script.setAttribute('data-category-id', 'DIC_kwDORh6uuM4C3_BA');
+        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-strict', '0');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'bottom');
+        script.setAttribute('data-theme', getTheme());
+        script.setAttribute('data-lang', 'zh-CN');
+        
+        container.appendChild(script);
+      }
+      
+      // 切换主题
+      function updateGiscusTheme() {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        
+        const theme = getTheme();
         iframe.contentWindow.postMessage(
           { giscus: { setConfig: { theme: theme } } },
           'https://giscus.app'
         );
+        console.log('[Giscus] 主题切换为:', theme);
       }
-    }
-    
-    // 初始加载（等 Giscus iframe 准备好）
-    let giscusLoaded = false;
-    window.addEventListener('message', function(event) {
-      if (event.origin !== 'https://giscus.app') return;
-      if (giscusLoaded) return;
-      giscusLoaded = true;
       
-      // Giscus 加载完成后应用当前主题
-      setTimeout(updateGiscusTheme, 100);
-    });
-    
-    // 监听主题切换按钮
-    document.addEventListener('click', function(e) {
-      if (e.target.closest('#theme-toggle')) {
-        setTimeout(updateGiscusTheme, 200);
+      // 页面加载完成后初始化
+      if (document.readyState === 'complete') {
+        loadGiscus();
+      } else {
+        window.addEventListener('load', loadGiscus);
       }
-    });
+      
+      // 监听主题切换
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('#theme-toggle')) {
+          setTimeout(updateGiscusTheme, 300);
+        }
+      });
+    })();
   </script>
 
   {{- if (.Param "comments") }}
