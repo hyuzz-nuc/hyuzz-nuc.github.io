@@ -3,7 +3,7 @@
    =================================== */
 
 /* ===================================
-   全局配色 - 暗金色系
+   全局配色 - 暗金色系（日间模式）
    =================================== */
 :root {
   --primary-gold: #b8860b;
@@ -20,6 +20,23 @@
 }
 
 /* ===================================
+   深色模式 - 低亮度护眼配色
+   =================================== */
+[data-theme="dark"] {
+  --bg-body: #0d0d0d;
+  --bg-card: #1a1a1a;
+  --bg-widget: #141414;
+  --text-primary: #d0d0d0;
+  --text-secondary: #9a9a9a;
+  --text-muted: #6a6a6a;
+  --border-primary: #2a2a2a;
+  --border-secondary: #1f1f1f;
+  --primary-gold: #c9a962;
+  --secondary-gold: #b8954a;
+  --dark-gold: #8b6914;
+}
+
+/* ===================================
    全局背景 - 简约护眼
    =================================== */
 body {
@@ -31,6 +48,13 @@ body {
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* 深色模式背景 */
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #0d0d0d 0%, #141414 100%);
+  color: var(--text-primary);
 }
 
 /* ===================================
@@ -161,6 +185,15 @@ body {
   font-weight: 600;
 }
 
+/* 深色模式页面标题 */
+[data-theme="dark"] .page-header {
+  border-bottom-color: var(--primary-gold);
+}
+
+[data-theme="dark"] .page-header h1 {
+  color: var(--primary-gold);
+}
+
 /* ===================================
    文章列表
    =================================== */
@@ -182,6 +215,13 @@ body {
   transition: all 0.2s ease;
   position: relative;
   z-index: 10;
+}
+
+/* 深色模式文章卡片 */
+[data-theme="dark"] .post-entry {
+  background: var(--bg-card);
+  border-color: var(--border-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .post-entry:hover {
@@ -214,6 +254,46 @@ body {
   line-height: 1.8;
   color: var(--text-dark);
   margin-bottom: 15px;
+}
+
+/* 深色模式文字颜色 */
+[data-theme="dark"] .post-entry h2 a {
+  color: var(--primary-gold);
+}
+
+[data-theme="dark"] .entry-content {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .post-meta {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .widget-title {
+  color: var(--primary-gold);
+}
+
+[data-theme="dark"] .stat-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .search-input {
+  background: var(--bg-widget);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .recent-posts-list a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .recent-posts-date {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .archive-list a {
+  color: var(--text-primary);
+  background: var(--bg-widget);
 }
 
 .entry-footer {
@@ -250,6 +330,13 @@ body {
   text-decoration: none;
   box-shadow: 0 2px 4px rgba(184, 134, 11, 0.1);
   transition: all 0.15s ease;
+}
+
+/* 深色模式分页 */
+[data-theme="dark"] .pagination a {
+  background: var(--bg-widget);
+  border-color: var(--border-primary);
+  color: var(--text-primary);
 }
 
 .pagination a:hover {
@@ -320,6 +407,13 @@ body {
   padding: 18px;
 }
 
+/* 深色模式小组件 */
+[data-theme="dark"] .widget {
+  background: var(--bg-widget);
+  border-color: var(--border-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .widget-title {
   font-size: 15px;
   color: var(--primary-gold);
@@ -369,6 +463,12 @@ body {
   background: var(--dark-gold);
   transform: translateY(-1px);
   box-shadow: 0 2px 6px rgba(184, 134, 11, 0.2);
+}
+
+/* 深色模式搜索框 */
+[data-theme="dark"] .search-btn {
+  background: var(--primary-gold);
+  color: #fff;
 }
 
 .search-results {
@@ -663,6 +763,27 @@ body {
   box-shadow: 0 2px 8px rgba(184, 134, 11, 0.1);
 }
 
+/* 深色模式导航栏 */
+[data-theme="dark"] .header {
+  background: var(--bg-widget);
+  border-bottom-color: var(--border-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .logo a {
+  color: var(--primary-gold);
+}
+
+[data-theme="dark"] #menu li a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] #menu li a:hover,
+[data-theme="dark"] #menu li a.active {
+  background: var(--primary-gold);
+  color: #fff;
+}
+
 .nav {
   max-width: 1200px;
   margin: 0 auto;
@@ -751,6 +872,13 @@ body {
 .footer a {
   color: var(--primary-gold);
   font-weight: 500;
+}
+
+/* 深色模式页脚 */
+[data-theme="dark"] .footer {
+  background: var(--bg-widget);
+  border-top-color: var(--border-primary);
+  color: var(--text-secondary);
 }
 
 /* ===================================
