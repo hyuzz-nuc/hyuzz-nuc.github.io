@@ -43,15 +43,27 @@
 
   <!-- 中间文章列表 -->
   <main class="main-content">
-    {{- if .Site.Params.homeInfoParams }}
-    {{- partial "home_info.html" . }}
-    {{- end }}
+    <div class="page-header">
+      <h1>📝 全部文章</h1>
+    </div>
 
     {{- $posts := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
     {{- if gt $posts.TotalPages 0 }}
     <div class="article-list">
       {{- range $posts.Pages }}
-      {{- .Render "summary" }}
+      <article class="post-entry">
+        <header class="entry-header">
+          <h2>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+        </header>
+        <div class="entry-content">
+          <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        </div>
+        <footer class="entry-footer">
+          <span class="post-meta">{{ .Date.Format "2006-01-02" }} · {{ .ReadingTime }} 分钟阅读</span>
+        </footer>
+      </article>
       {{- end }}
     </div>
     
@@ -65,7 +77,6 @@
   <!-- 右侧边栏 -->
   <aside class="sidebar-right">
     <!-- 搜索框 -->
-    {{- if site.Params.enableSearch }}
     <div class="widget search-widget">
       <h3 class="widget-title">🔍 搜索</h3>
       <div class="search-box">
@@ -74,7 +85,6 @@
       </div>
       <div id="search-results" class="search-results"></div>
     </div>
-    {{- end }}
 
     <!-- 标签云 -->
     <div class="widget tags-widget">
@@ -103,18 +113,16 @@
 </div>
 
 <!-- 搜索功能脚本 -->
-{{- if site.Params.enableSearch }}
 <script>
   const searchInput = document.getElementById('search-input');
   const searchBtn = document.getElementById('search-btn');
   const searchResults = document.getElementById('search-results');
   
-  // 简单的客户端搜索（也可以接入 fuse.js 等搜索库）
   async function doSearch() {
     const query = searchInput.value.trim();
     if (!query) return;
     
-    searchResults.innerHTML = '<p style="padding:10px;">搜索中...</p>';
+    searchResults.innerHTML = '<p style="padding:10px;font-size:12px;">搜索中...</p>';
     
     try {
       const response = await fetch('/index.json');
@@ -125,7 +133,7 @@
       ).slice(0, 5);
       
       if (results.length === 0) {
-        searchResults.innerHTML = '<p style="padding:10px;">未找到相关内容</p>';
+        searchResults.innerHTML = '<p style="padding:10px;font-size:12px;">未找到相关内容</p>';
       } else {
         searchResults.innerHTML = results.map(item => `
           <div class="search-result-item">
@@ -134,7 +142,7 @@
         `).join('');
       }
     } catch (e) {
-      searchResults.innerHTML = '<p style="padding:10px;color:red;">搜索出错</p>';
+      searchResults.innerHTML = '<p style="padding:10px;font-size:12px;color:red;">搜索出错</p>';
     }
   }
   
@@ -143,6 +151,5 @@
     if (e.key === 'Enter') doSearch();
   });
 </script>
-{{- end }}
 
 {{- end }}

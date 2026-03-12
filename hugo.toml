@@ -56,9 +56,9 @@ paginate = 10
   # 自定义 CSS/JS
   customCSS = ["css/custom.css"]
   customJS = ["js/custom.js"]
-  # 首页信息
-  homeInfoParams.Title = "Hyuzz 的博客"
-  homeInfoParams.Content = "专注技术分享 · 记录成长点滴\n欢迎来访，一起交流学习～"
+  # 首页信息（已禁用，使用自定义三栏布局）
+  # homeInfoParams.Title = "Hyuzz 的博客"
+  # homeInfoParams.Content = "专注技术分享 · 记录成长点滴\n欢迎来访，一起交流学习～"
   # 作者信息
   author = "hyuzz"
   authorImage = "/images/avatar.png"
