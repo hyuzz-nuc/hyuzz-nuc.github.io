@@ -1,0 +1,85 @@
+{{- define "main" }}
+
+<!-- 左右分栏布局 -->
+<div class="home-layout">
+  
+  <!-- 左侧文章详情 -->
+  <main class="main-content">
+    <article class="post-single">
+      <header class="post-header">
+        {{- partial "breadcrumbs.html" . }}
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{- if .Description }}
+        <div class="post-description">{{ .Description }}</div>
+        {{- end }}
+        {{- if not (.Param "hideMeta") }}
+        <div class="post-meta">
+          {{- partial "post_meta.html" . -}}
+        </div>
+        {{- end }}
+      </header>
+      
+      {{- if .Content }}
+      <div class="post-content">
+        {{ .Content }}
+      </div>
+      {{- end }}
+
+      <footer class="post-footer">
+        {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+        {{- if .GetTerms $tags }}
+        <ul class="post-tags">
+          {{- range (.GetTerms $tags) }}
+          <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+          {{- end }}
+        </ul>
+        {{- end }}
+      </footer>
+
+      <!-- Giscus 评论区 -->
+      <div class="giscus-comments" style="margin-top: 40px; padding-top: 20px; border-top: 1px dashed var(--border-light);">
+        <h4 style="color: var(--primary-gold); margin-bottom: 20px; font-size: 16px;">评论区</h4>
+        <script src="https://giscus.app/client.js"
+          data-repo="hyuzz-nuc/hyuzz-nuc.github.io"
+          data-repo-id="R_kgDORh6uuA"
+          data-category="Announcements"
+          data-category-id="DIC_kwDORh6uuM4C3_BA"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+    </article>
+  </main>
+
+  <!-- 右侧边栏 -->
+  {{- partial "sidebar-right.html" . }}
+</div>
+
+<!-- 微信二维码弹窗 -->
+<div id="wechat-modal" class="modal" onclick="hideWechatQR()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="hideWechatQR()">&times;</span>
+    <h4>微信扫一扫</h4>
+    <img src="/images/wechat-qrcode.png" alt="微信二维码" class="wechat-qr">
+    <p>加我好友，一起交流学习～</p>
+  </div>
+</div>
+
+<script>
+  function showWechatQR() {
+    document.getElementById('wechat-modal').style.display = 'flex';
+  }
+
+  function hideWechatQR() {
+    document.getElementById('wechat-modal').style.display = 'none';
+  }
+</script>
+
+{{- end }}

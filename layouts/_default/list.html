@@ -1,0 +1,67 @@
+{{- define "main" }}
+
+<!-- 左右分栏布局 -->
+<div class="home-layout">
+  
+  <!-- 左侧内容 -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>{{ .Title }}</h1>
+    </div>
+
+    {{- $posts := .Paginate .RegularPages }}
+    {{- if gt $posts.TotalPages 0 }}
+    <div class="article-list">
+      {{- range $posts.Pages }}
+      <article class="post-entry">
+        <header class="entry-header">
+          <h2>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+        </header>
+        <div class="entry-content">
+          <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        </div>
+        <footer class="entry-footer">
+          <span class="post-meta">
+            📅 {{ .Date.Format "2006-01-02" }}
+            &nbsp;·&nbsp;
+            ⏱️ {{ .ReadingTime }} 分钟阅读
+          </span>
+        </footer>
+      </article>
+      {{- end }}
+    </div>
+    
+    <!-- 分页 -->
+    {{- if gt $posts.TotalPages 1 }}
+    {{- partial "pagination.html" . }}
+    {{- end }}
+    {{- end }}
+  </main>
+
+  <!-- 右侧边栏 -->
+  {{- partial "sidebar-right.html" . }}
+</div>
+
+<!-- 微信二维码弹窗 -->
+<div id="wechat-modal" class="modal" onclick="hideWechatQR()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="hideWechatQR()">&times;</span>
+    <h4>微信扫一扫</h4>
+    <img src="/images/wechat-qrcode.png" alt="微信二维码" class="wechat-qr">
+    <p>加我好友，一起交流学习～</p>
+  </div>
+</div>
+
+<script>
+  function showWechatQR() {
+    document.getElementById('wechat-modal').style.display = 'flex';
+  }
+
+  function hideWechatQR() {
+    document.getElementById('wechat-modal').style.display = 'none';
+  }
+</script>
+
+{{- end }}
