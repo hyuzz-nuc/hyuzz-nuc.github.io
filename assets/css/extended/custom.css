@@ -10,14 +10,15 @@
   --secondary-gold: #daa520;
   --dark-gold: #8b6914;
   --light-gold: #ffd700;
-  --bg-cream: #f5f0e6;
-  --bg-light: #faf6ed;
-  --bg-warm: #f5f0e6;
-  --bg-paper: #f0ebd9;
+  --bg-cream: #e8e4d5;
+  --bg-light: #f5f2e8;
+  --bg-warm: #e8e4d5;
+  --bg-paper: #dcd6c5;
+  --bg-body: #d4cfc0;
   --text-dark: #3c3831;
   --text-gray: #6b6355;
   --border-gold: #c4a777;
-  --border-light: #e0d5c1;
+  --border-light: #d0c8b8;
 }
 
 /* ===================================
@@ -38,13 +39,13 @@
 }
 
 /* ===================================
-   全局背景 - 牛皮纸质感护眼
+   全局背景 - 牛皮纸质感护眼（暗灰色调）
    =================================== */
 body {
-  background-color: #f0ebd9;
+  background-color: #d4cfc0;
   background-image: 
-    linear-gradient(135deg, rgba(245, 240, 230, 0.8) 0%, rgba(240, 235, 217, 0.9) 100%),
-    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    linear-gradient(135deg, rgba(232, 228, 213, 0.7) 0%, rgba(220, 214, 197, 0.8) 100%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -149,7 +150,7 @@ body {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--primary-gold);
+  background: #c9b896;
 }
 
 .main-content {
@@ -220,6 +221,11 @@ body {
   transition: all 0.2s ease;
   position: relative;
   z-index: 10;
+}
+
+/* 日间模式文章卡片 - 暖白色 */
+.post-entry {
+  background: #f9f6ed;
 }
 
 /* 深色模式文章卡片 */
@@ -415,6 +421,11 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(184, 134, 11, 0.1);
   padding: 18px;
+}
+
+/* 日间模式小组件 - 暖白色 */
+.widget {
+  background: #f9f6ed;
 }
 
 /* 深色模式小组件 */
@@ -808,7 +819,7 @@ body {
    导航栏样式
    =================================== */
 .header {
-  background: var(--bg-light);
+  background: #f9f6ed;
   border-bottom: 2px solid var(--border-gold);
   padding: 12px 0;
   box-shadow: 0 2px 8px rgba(184, 134, 11, 0.1);
