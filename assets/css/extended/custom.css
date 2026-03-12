@@ -1233,9 +1233,24 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
     padding: 0 15px;
   }
   
-  /* 侧边栏隐藏或移到文章列表下方 */
+  /* 侧边栏在移动端移到文章列表下方显示 */
   .sidebar-right {
-    display: none;
+    display: block;
+    margin-top: 30px;
+    border-top: 2px solid var(--border-gold);
+    padding-top: 20px;
+  }
+  
+  /* 移动端侧边栏标题 */
+  .sidebar-right::before {
+    content: '⚙️ 功能菜单';
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-light);
   }
   
   /* 导航栏菜单优化 */
