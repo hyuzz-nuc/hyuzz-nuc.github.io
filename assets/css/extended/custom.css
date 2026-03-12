@@ -148,7 +148,7 @@ body {
 }
 
 /* ===================================
-   首页左右分栏布局 - 带分割线
+   首页左右分栏布局
    =================================== */
 .home-layout {
   display: grid;
@@ -163,21 +163,29 @@ body {
   background: transparent !important;
 }
 
-/* 左右分割线 - 与导航栏分割线样式一致 */
-.home-layout::before {
-  content: '';
-  position: absolute;
-  left: calc(100% - 300px - 30px);
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #c9b896;
+/* 左右分割线 - 桌面端显示 */
+@media (min-width: 901px) {
+  .home-layout::before {
+    content: '';
+    position: absolute;
+    left: calc(100% - 300px - 30px);
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #c9b896;
+  }
 }
 
 /* 移动端隐藏分割线 */
 @media (max-width: 900px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
   .home-layout::before {
-    display: none;
+    display: none !important;
   }
 }
 

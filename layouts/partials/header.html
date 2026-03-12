@@ -58,20 +58,11 @@
         </div>
         
         <ul id="menu" class="menu-list">
-            <!-- 移动端菜单标题 -->
-            <li class="menu-title mobile-only">
-                <span>📱 功能菜单</span>
-            </li>
-            
             {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $.Permalink | absLangURL }}
             <li>
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
-                    {{- if eq .Name "首页" }}🏠 {{ end -}}
-                    {{- if eq .Name "文章" }}📝 {{ end -}}
-                    {{- if eq .Name "归档" }}📁 {{ end -}}
-                    {{- if eq .Name "关于" }}👤 {{ end -}}
                     <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
                         {{- .Name -}}
                     </span>
