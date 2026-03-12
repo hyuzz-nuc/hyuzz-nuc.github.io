@@ -89,8 +89,13 @@ async function goToRandomPost() {
     const response = await fetch('/index.json');
     const data = await response.json();
     
-    // 过滤出文章（排除首页等）
-    const posts = data.filter(item => item.permalink && !item.permalink.endsWith('/'));
+    // 过滤出文章（排除首页、关于页、归档页等，只保留 /posts/ 目录的文章）
+    const posts = data.filter(item => 
+      item.permalink && 
+      item.permalink.includes('/posts/')
+    );
+    
+    console.log('总文章数:', data.length, '过滤后:', posts.length);
     
     if (posts.length === 0) {
       showToast('暂无文章');
@@ -101,8 +106,13 @@ async function goToRandomPost() {
     const randomPost = posts[randomIndex];
     
     // 显示提示
-    console.log('随机文章:', randomPost.title);
-    window.location.href = randomPost.permalink;
+    showToast('🎯 随机前往：' + randomPost.title);
+    console.log('随机文章:', randomPost.title, randomPost.permalink);
+    
+    // 延迟 1 秒跳转，让用户看到提示
+    setTimeout(() => {
+      window.location.href = randomPost.permalink;
+    }, 800);
   } catch (error) {
     console.error('获取文章列表失败:', error);
     showToast('随机文章功能暂时不可用');
