@@ -3,18 +3,19 @@
    =================================== */
 
 /* ===================================
-   全局配色 - 暗金色系（日间模式）
+   全局配色 - 牛皮纸质感（日间模式）
    =================================== */
 :root {
   --primary-gold: #b8860b;
   --secondary-gold: #daa520;
   --dark-gold: #8b6914;
   --light-gold: #ffd700;
-  --bg-cream: #faf8f5;
-  --bg-light: #fffef9;
+  --bg-cream: #f5f0e6;
+  --bg-light: #faf6ed;
   --bg-warm: #f5f0e6;
-  --text-dark: #2c2c2c;
-  --text-gray: #666666;
+  --bg-paper: #f0ebd9;
+  --text-dark: #3c3831;
+  --text-gray: #6b6355;
   --border-gold: #c4a777;
   --border-light: #e0d5c1;
 }
@@ -37,11 +38,15 @@
 }
 
 /* ===================================
-   全局背景 - 简约护眼
+   全局背景 - 牛皮纸质感护眼
    =================================== */
 body {
-  background: linear-gradient(135deg, #faf8f5 0%, #f5f0e6 100%);
+  background-color: #f0ebd9;
+  background-image: 
+    linear-gradient(135deg, rgba(245, 240, 230, 0.8) 0%, rgba(240, 235, 217, 0.9) 100%),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
   background-attachment: fixed;
+  background-size: cover;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   color: var(--text-dark);
@@ -372,6 +377,11 @@ body {
   border-bottom: 1px dashed var(--border-light);
 }
 
+/* 深色模式统计列表 */
+[data-theme="dark"] .stats-widget li {
+  border-bottom-color: var(--border-primary);
+}
+
 .stats-widget li:last-child {
   border-bottom: none;
 }
@@ -423,6 +433,12 @@ body {
   font-weight: 600;
 }
 
+/* 深色模式小组件标题 */
+[data-theme="dark"] .widget-title {
+  color: var(--primary-gold);
+  border-bottom-color: var(--border-primary);
+}
+
 /* ===================================
    搜索组件
    =================================== */
@@ -439,6 +455,13 @@ body {
   font-size: 13px;
   background: #fff;
   color: var(--text-dark);
+}
+
+/* 深色模式搜索输入框 */
+[data-theme="dark"] .search-input {
+  background: var(--bg-widget);
+  color: var(--text-primary);
+  border-color: var(--border-primary);
 }
 
 .search-input:focus {
@@ -590,6 +613,13 @@ body {
   color: var(--text-dark);
   text-decoration: none;
   transition: all 0.15s ease;
+}
+
+/* 深色模式归档列表 */
+[data-theme="dark"] .archive-list a {
+  background: var(--bg-widget);
+  border-color: var(--border-secondary);
+  color: var(--text-primary);
 }
 
 .archive-list a:hover {
@@ -1081,6 +1111,20 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   background: var(--bg-card);
   border-color: var(--border-primary);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .post-single h1,
+[data-theme="dark"] .post-single h2,
+[data-theme="dark"] .post-single h3 {
+  color: var(--primary-gold);
+}
+
+[data-theme="dark"] .post-meta {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .post-description {
+  color: var(--text-secondary);
 }
 
 [data-theme="dark"] .post-content {
