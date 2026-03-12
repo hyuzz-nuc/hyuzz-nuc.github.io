@@ -8,6 +8,13 @@
 
 <header class="header">
     <nav class="nav">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="菜单" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
             {{- if site.Title }}
@@ -50,7 +57,7 @@
             </div>
         </div>
         
-        <ul id="menu">
+        <ul id="menu" class="menu-list">
             {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $.Permalink | absLangURL }}
@@ -84,6 +91,49 @@
   function hideWechatQR() {
     document.getElementById('wechat-modal').style.display = 'none';
   }
+  
+  // 移动端汉堡菜单
+  (function() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('menu');
+    
+    if (!menuBtn || !menu) return;
+    
+    function isMobile() {
+      return window.innerWidth <= 900;
+    }
+    
+    function toggleMenu() {
+      menu.classList.toggle('mobile-open');
+      menuBtn.classList.toggle('active');
+      document.body.style.overflow = menu.classList.contains('mobile-open') ? 'hidden' : '';
+    }
+    
+    function closeMenu() {
+      menu.classList.remove('mobile-open');
+      menuBtn.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    menuBtn.addEventListener('click', toggleMenu);
+    menu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') closeMenu();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+    
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if (!isMobile()) closeMenu();
+        menuBtn.style.display = isMobile() ? 'flex' : 'none';
+      }, 200);
+    });
+    
+    menuBtn.style.display = isMobile() ? 'flex' : 'none';
+  })();
 </script>
 
 <!-- 樱花飘落特效 -->
