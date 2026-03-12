@@ -2,6 +2,107 @@
    复古卡通风博客 - 自定义样式
    =================================== */
 
+/* --- 像素字体引入 --- */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* --- 全局复古背景 --- */
+body {
+  background-color: #f5f0e6;
+  background-image: url('/images/background/pixel_bg_desktop.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  body {
+    background-image: url('/images/background/pixel_bg_mobile.png');
+  }
+}
+
+/* --- 主容器复古窗口样式 --- */
+.main, .home {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fffef9;
+  border: 4px solid #5c4033;
+  border-radius: 8px;
+  box-shadow: 6px 6px 0px rgba(92, 64, 51, 0.4);
+}
+
+/* --- 文章卡片复古边框 --- */
+.post-card, .main-post, .post-entry {
+  border: 3px solid #5c4033 !important;
+  border-radius: 8px !important;
+  box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.3) !important;
+  background: #fffef9 !important;
+  transition: all 0.2s ease !important;
+}
+
+.post-card:hover, .post-entry:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px rgba(92, 64, 51, 0.4) !important;
+}
+
+/* --- 导航栏复古样式 --- */
+.header, .nav {
+  background: #f0e6d2;
+  border-bottom: 4px solid #5c4033;
+  padding: 15px 0;
+}
+
+.nav-link {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 12px;
+  color: #5c4033;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: all 0.1s ease;
+}
+
+.nav-link:hover {
+  background: #c41e3a;
+  color: #fff;
+  border-color: #8b0000;
+  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.3);
+}
+
+/* --- 标题复古样式 --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  color: #c41e3a;
+  text-shadow: 2px 2px 0px rgba(92, 64, 51, 0.2);
+}
+
+.post-title {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+/* --- 按钮复古样式 --- */
+button, .btn, .button, .share-buttons button {
+  border: 3px solid #5c4033 !important;
+  border-radius: 4px !important;
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3) !important;
+  font-family: 'Press Start 2P', 'Courier New', monospace !important;
+  font-size: 12px !important;
+  transition: all 0.1s ease !important;
+  cursor: pointer !important;
+}
+
+button:hover, .btn:hover, .button:hover, .share-buttons button:hover {
+  transform: translate(-1px, -1px) !important;
+  box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.3) !important;
+}
+
+button:active, .btn:active, .button:active, .share-buttons button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px rgba(92, 64, 51, 0.3) !important;
+}
+
 /* --- 不蒜子访客统计 - 像素数字样式 --- */
 .busuanzi-container {
   display: inline-flex;
@@ -14,6 +115,7 @@
   font-family: 'Press Start 2P', 'Courier New', monospace;
   font-size: 12px;
   color: #5c4033;
+  margin-top: 10px;
 }
 
 .busuanzi-text {
@@ -88,46 +190,90 @@
   font-family: 'Courier New', monospace;
 }
 
-/* --- 像素字体引入 --- */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-/* --- 全局复古背景 --- */
-body {
-  background-color: #f5f0e6;
-  background-image: 
-    linear-gradient(45deg, #e8e0d0 25%, transparent 25%),
-    linear-gradient(-45deg, #e8e0d0 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #e8e0d0 75%),
-    linear-gradient(-45deg, transparent 75%, #e8e0d0 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+/* --- 代码块复古边框 --- */
+code, pre {
+  border: 2px solid #d4c4a8;
+  border-radius: 4px;
 }
 
-/* --- 文章卡片复古边框 --- */
-.post-card, .main-post {
-  border: 3px solid #5c4033 !important;
-  border-radius: 8px !important;
-  box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.2) !important;
-  background: #fffef9 !important;
+pre {
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.2);
 }
 
-/* --- 按钮复古样式 --- */
-button, .btn, .button {
-  border: 3px solid #5c4033 !important;
-  border-radius: 4px !important;
-  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3) !important;
-  font-family: 'Press Start 2P', 'Courier New', monospace !important;
-  transition: all 0.1s ease !important;
+/* --- 链接复古样式 --- */
+a {
+  color: #c41e3a;
+  text-decoration: none;
+  border-bottom: 2px dashed #c41e3a;
+  transition: all 0.2s ease;
 }
 
-button:hover, .btn:hover, .button:hover {
-  transform: translate(-1px, -1px) !important;
-  box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.3) !important;
+a:hover {
+  color: #8b0000;
+  border-bottom-style: solid;
 }
 
-button:active, .btn:active, .button:active {
-  transform: translate(2px, 2px) !important;
-  box-shadow: 1px 1px 0px rgba(92, 64, 51, 0.3) !important;
+/* --- 页脚复古样式 --- */
+.footer {
+  background: #f0e6d2;
+  border-top: 4px solid #5c4033;
+  padding: 20px;
+  margin-top: 40px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  color: #5c4033;
+}
+
+/* --- 标签和分类 --- */
+.tags, .categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.tags li, .categories li {
+  list-style: none;
+}
+
+.tags a, .categories a {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #f0e6d2;
+  border: 2px solid #5c4033;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.2);
+  transition: all 0.1s ease;
+}
+
+.tags a:hover, .categories a:hover {
+  background: #c41e3a;
+  color: #fff;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3);
+}
+
+/* --- 移动端适配 --- */
+@media (max-width: 768px) {
+  .main, .home {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .post-title {
+    font-size: 18px;
+  }
+  
+  .nav-link {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  
+  .recent-posts-widget {
+    padding: 15px;
+  }
 }
 
 /* --- 导航栏复古样式 --- */
