@@ -1,5 +1,12 @@
 <header class="header">
     <nav class="nav">
+        <!-- 移动端汉堡菜单按钮 -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="菜单" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
         <div class="logo">
             {{- $label_text := (site.Params.label.text | default site.Title) }}
             {{- if site.Title }}
@@ -81,7 +88,7 @@
             </div>
         </div>
         {{- $currentPage := . }}
-        <ul id="menu">
+        <ul id="menu" class="menu-list">
             {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
@@ -108,3 +115,77 @@
         </ul>
     </nav>
 </header>
+
+<script>
+  // 移动端汉堡菜单
+  (function() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('menu');
+    
+    if (!menuBtn || !menu) return;
+    
+    // 检测移动端
+    function isMobile() {
+      return window.innerWidth <= 900;
+    }
+    
+    // 切换菜单显示
+    function toggleMenu() {
+      menu.classList.toggle('mobile-open');
+      menuBtn.classList.toggle('active');
+      
+      // 防止背景滚动
+      if (menu.classList.contains('mobile-open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // 关闭菜单
+    function closeMenu() {
+      menu.classList.remove('mobile-open');
+      menuBtn.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    // 点击汉堡按钮
+    menuBtn.addEventListener('click', toggleMenu);
+    
+    // 点击菜单项关闭
+    menu.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        closeMenu();
+      }
+    });
+    
+    // ESC 关闭
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+    
+    // 窗口大小变化时调整
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if (!isMobile()) {
+          closeMenu();
+        }
+      }, 200);
+    });
+    
+    // 显示/隐藏汉堡按钮
+    function updateMenuButton() {
+      if (isMobile()) {
+        menuBtn.style.display = 'block';
+      } else {
+        menuBtn.style.display = 'none';
+        closeMenu();
+      }
+    }
+    
+    updateMenuButton();
+    window.addEventListener('resize', updateMenuButton);
+  })();
+</script>
