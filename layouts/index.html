@@ -1,0 +1,16 @@
+{{- define "main" }}
+{{- if .Site.Params.homeInfoParams }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+{{/* 最近文章模块 */}}
+{{- partial "recent-posts.html" . }}
+
+{{- $posts := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+{{- if gt $posts.TotalPages 0 }}
+{{- range $posts.Pages }}
+{{- .Render "summary" }}
+{{- end }}
+{{- partial "pagination.html" . }}
+{{- end }}
+{{- end }}

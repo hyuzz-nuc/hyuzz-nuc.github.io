@@ -49,6 +49,8 @@ paginate = 10
 # 核心美化配置
 [params]
   theme = "auto"
+  # 自定义 CSS
+  customCSS = ["css/custom.css"]
   # 首页信息
   homeInfoParams.Title = "Hyuzz 的博客"
   homeInfoParams.Content = "专注技术分享 · 记录成长点滴\n欢迎来访，一起交流学习～"

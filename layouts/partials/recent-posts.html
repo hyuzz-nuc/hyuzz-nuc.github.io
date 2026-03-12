@@ -1,0 +1,12 @@
+{{/* 最近文章模块 - 复古风格 */}}
+<div class="recent-posts-widget">
+  <h3 class="recent-posts-title">📜 最近发表</h3>
+  <ul class="recent-posts-list">
+    {{ range first 5 (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <span class="recent-posts-date">{{ .Date.Format "2006-01-02" }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</div>
