@@ -477,15 +477,20 @@ body {
   border: 1px solid var(--border-gold);
   border-radius: 4px;
   font-size: 13px;
-  background: #f5f0e6;
+  background: #f5f0e6 !important;
   color: var(--text-dark);
 }
 
 /* 深色模式搜索输入框 */
 [data-theme="dark"] .search-input {
-  background: var(--bg-widget) !important;
-  color: var(--text-primary);
-  border-color: var(--border-primary);
+  background: #1a1a1a !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-primary) !important;
+}
+
+/* 深色模式搜索框容器 */
+[data-theme="dark"] .widget:has(.search-box) {
+  background: #141414 !important;
 }
 
 .search-input:focus {
