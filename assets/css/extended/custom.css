@@ -1,46 +1,34 @@
 /* ===================================
-   复古卡通风博客 - 护眼绿色系
-   PaperMod 主题适配版
+   博客样式 - 暗金色系 + 简约护眼背景
    =================================== */
-
-/* --- 像素字体引入 --- */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* ===================================
-   全局配色 - 护眼绿色系
+   全局配色 - 暗金色系
    =================================== */
 :root {
-  --primary-green: #2e7d32;
-  --secondary-green: #388e3c;
-  --dark-green: #1b5e20;
-  --light-green: #4caf50;
-  --bg-cream: #f5f5dc;
-  --bg-light: #faf8f0;
-  --text-dark: #333333;
+  --primary-gold: #b8860b;
+  --secondary-gold: #daa520;
+  --dark-gold: #8b6914;
+  --light-gold: #ffd700;
+  --bg-cream: #faf8f5;
+  --bg-light: #fffef9;
+  --bg-warm: #f5f0e6;
+  --text-dark: #2c2c2c;
   --text-gray: #666666;
-  --border-brown: #8d6e63;
-  --border-light: #d7ccc8;
+  --border-gold: #c4a777;
+  --border-light: #e0d5c1;
 }
 
 /* ===================================
-   全局背景
+   全局背景 - 简约护眼
    =================================== */
 body {
-  background-color: #f5f5dc;
-  background-image: url('/images/background/pixel_bg_desktop.png');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, #faf8f5 0%, #f5f0e6 100%);
   background-attachment: fixed;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   color: var(--text-dark);
-}
-
-/* 移动端适配 */
-@media (max-width: 768px) {
-  body {
-    background-image: url('/images/background/pixel_bg_mobile.png');
-  }
+  line-height: 1.6;
 }
 
 /* ===================================
@@ -57,31 +45,15 @@ body {
 }
 
 /* ===================================
-   首页左右分栏布局
+   首页左右分栏布局 - 无分割线
    =================================== */
 .home-layout {
   display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 40px;
-  max-width: 1400px;
+  grid-template-columns: 1fr 320px;
+  gap: 30px;
+  max-width: 1300px;
   margin: 30px auto;
-  padding: 0 30px;
-  position: relative;
-}
-
-/* 左右分隔线 */
-.home-layout::before {
-  content: '';
-  position: absolute;
-  left: calc(100% - 340px - 20px);
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, 
-    transparent 0%, 
-    var(--border-light) 10%, 
-    var(--border-light) 90%, 
-    transparent 100%);
+  padding: 0 20px;
 }
 
 .main-content {
@@ -91,7 +63,7 @@ body {
 .sidebar-right {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
 
 /* 移动端适配 */
@@ -100,31 +72,22 @@ body {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
-  .home-layout::before {
-    display: none;
-  }
-  
-  .sidebar-right {
-    position: static;
-  }
 }
 
 /* ===================================
    页面标题
    =================================== */
 .page-header {
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 3px solid var(--primary-green);
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--primary-gold);
 }
 
 .page-header h1 {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 24px;
-  color: var(--primary-green);
+  font-size: 22px;
+  color: var(--primary-gold);
   margin: 0;
-  text-shadow: 1px 1px 0px rgba(46, 125, 50, 0.2);
+  font-weight: 600;
 }
 
 /* ===================================
@@ -133,7 +96,7 @@ body {
 .article-list {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
 
 /* ===================================
@@ -141,40 +104,39 @@ body {
    =================================== */
 .post-entry {
   background: var(--bg-light);
-  border: 3px solid var(--border-brown);
+  border: 2px solid var(--border-gold);
   border-radius: 8px;
-  box-shadow: 4px 4px 0px rgba(141, 110, 99, 0.3);
-  padding: 25px;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.15);
+  padding: 22px;
   transition: all 0.2s ease;
 }
 
 .post-entry:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px rgba(141, 110, 99, 0.4);
-  border-color: var(--primary-green);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(184, 134, 11, 0.2);
+  border-color: var(--primary-gold);
 }
 
 .post-entry h2 {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 16px;
-  margin: 0 0 15px 0;
-  line-height: 1.6;
+  font-size: 18px;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+  font-weight: 600;
 }
 
 .post-entry h2 a {
-  color: var(--primary-green);
+  color: var(--primary-gold);
   text-decoration: none;
-  border-bottom: 2px dashed var(--primary-green);
+  border-bottom: 1px dashed var(--primary-gold);
   transition: all 0.2s ease;
 }
 
 .post-entry h2 a:hover {
-  color: var(--dark-green);
+  color: var(--dark-gold);
   border-bottom-style: solid;
 }
 
 .entry-content {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 15px;
   line-height: 1.8;
   color: var(--text-dark);
@@ -182,12 +144,11 @@ body {
 }
 
 .entry-footer {
-  border-top: 2px dashed var(--border-light);
+  border-top: 1px dashed var(--border-light);
   padding-top: 12px;
 }
 
 .post-meta {
-  font-family: 'Courier New', monospace;
   font-size: 13px;
   color: var(--text-gray);
   display: flex;
@@ -203,27 +164,26 @@ body {
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin-top: 40px;
+  margin-top: 35px;
 }
 
 .pagination a {
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: var(--bg-light);
-  border: 3px solid var(--border-brown);
-  border-radius: 4px;
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 12px;
+  border: 2px solid var(--border-gold);
+  border-radius: 6px;
+  font-size: 14px;
   color: var(--text-dark);
   text-decoration: none;
-  box-shadow: 3px 3px 0px rgba(141, 110, 99, 0.3);
-  transition: all 0.1s ease;
+  box-shadow: 0 2px 4px rgba(184, 134, 11, 0.1);
+  transition: all 0.15s ease;
 }
 
 .pagination a:hover {
-  background: var(--primary-green);
+  background: var(--primary-gold);
   color: #fff;
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px rgba(141, 110, 99, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(184, 134, 11, 0.2);
 }
 
 /* ===================================
@@ -231,20 +191,19 @@ body {
    =================================== */
 .widget {
   background: var(--bg-light);
-  border: 3px solid var(--border-brown);
+  border: 2px solid var(--border-gold);
   border-radius: 8px;
-  box-shadow: 4px 4px 0px rgba(141, 110, 99, 0.3);
-  padding: 20px;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.1);
+  padding: 18px;
 }
 
 .widget-title {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 14px;
-  color: var(--primary-green);
-  margin: 0 0 15px 0;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--border-light);
-  text-shadow: 1px 1px 0px rgba(46, 125, 50, 0.2);
+  font-size: 15px;
+  color: var(--primary-gold);
+  margin: 0 0 14px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
+  font-weight: 600;
 }
 
 /* ===================================
@@ -257,10 +216,9 @@ body {
 
 .search-input {
   flex: 1;
-  padding: 10px 12px;
-  border: 2px solid var(--border-brown);
+  padding: 9px 12px;
+  border: 1px solid var(--border-gold);
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
   font-size: 13px;
   background: #fff;
   color: var(--text-dark);
@@ -268,26 +226,26 @@ body {
 
 .search-input:focus {
   outline: none;
-  border-color: var(--primary-green);
+  border-color: var(--primary-gold);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.1);
 }
 
 .search-btn {
-  padding: 10px 18px;
-  background: var(--primary-green);
+  padding: 9px 16px;
+  background: var(--primary-gold);
   color: #fff;
-  border: 2px solid var(--dark-green);
+  border: 1px solid var(--dark-gold);
   border-radius: 4px;
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
   white-space: nowrap;
 }
 
 .search-btn:hover {
-  background: var(--dark-green);
-  transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0px rgba(141, 110, 99, 0.3);
+  background: var(--dark-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(184, 134, 11, 0.2);
 }
 
 .search-results {
@@ -308,11 +266,11 @@ body {
   color: var(--text-dark);
   text-decoration: none;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .search-result-item a:hover {
-  color: var(--primary-green);
+  color: var(--primary-gold);
 }
 
 /* ===================================
@@ -325,11 +283,11 @@ body {
 }
 
 .recent-posts-list li {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   padding: 10px;
   background: #fff;
-  border: 2px solid var(--border-light);
-  border-radius: 4px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
   transition: all 0.2s ease;
 }
 
@@ -338,31 +296,28 @@ body {
 }
 
 .recent-posts-list li:hover {
-  background: var(--bg-light);
-  border-color: var(--primary-green);
-  transform: translate(-2px, -2px);
-  box-shadow: 2px 2px 0px rgba(46, 125, 50, 0.2);
+  background: var(--bg-warm);
+  border-color: var(--primary-gold);
+  transform: translateX(3px);
 }
 
 .recent-posts-list a {
   color: var(--text-dark);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 14px;
   display: block;
-  margin-bottom: 5px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin-bottom: 4px;
 }
 
 .recent-posts-list a:hover {
-  color: var(--primary-green);
+  color: var(--primary-gold);
 }
 
 .recent-posts-date {
   display: block;
   font-size: 12px;
   color: var(--text-gray);
-  font-family: 'Courier New', monospace;
 }
 
 /* ===================================
@@ -385,21 +340,19 @@ body {
   display: inline-block;
   padding: 6px 12px;
   background: #fff;
-  border: 2px solid var(--border-light);
+  border: 1px solid var(--border-light);
   border-radius: 4px;
   font-size: 12px;
-  font-family: 'Courier New', monospace;
   color: var(--text-dark);
   text-decoration: none;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
 }
 
 .archive-list a:hover {
-  background: var(--primary-green);
+  background: var(--primary-gold);
   color: #fff;
-  border-color: var(--dark-green);
-  transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0px rgba(141, 110, 99, 0.3);
+  border-color: var(--dark-gold);
+  transform: translateY(-1px);
 }
 
 .archive-count {
@@ -409,11 +362,11 @@ body {
 }
 
 /* ===================================
-   社交链接组件
+   社交链接组件 - 侧边栏
    =================================== */
 .social-links {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   justify-content: center;
 }
 
@@ -421,20 +374,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   background: #fff;
-  border: 2px solid var(--border-brown);
+  border: 2px solid var(--border-gold);
   border-radius: 8px;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .social-link:hover {
-  background: var(--primary-green);
-  border-color: var(--dark-green);
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0px rgba(141, 110, 99, 0.3);
+  background: var(--primary-gold);
+  border-color: var(--dark-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(184, 134, 11, 0.2);
 }
 
 .social-link:hover .social-icon {
@@ -442,8 +395,47 @@ body {
 }
 
 .social-icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  fill: var(--text-dark);
+  transition: fill 0.2s ease;
+}
+
+/* ===================================
+   导航栏社交链接 - 标题旁边
+   =================================== */
+.header-social-links {
+  display: inline-flex;
+  gap: 10px;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+.header-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.header-social-link:hover {
+  background: var(--primary-gold);
+  border-color: var(--dark-gold);
+  transform: translateY(-2px);
+}
+
+.header-social-link:hover svg {
+  fill: #fff;
+}
+
+.header-social-link svg {
+  width: 18px;
+  height: 18px;
   fill: var(--text-dark);
   transition: fill 0.2s ease;
 }
@@ -466,27 +458,27 @@ body {
 
 .modal-content {
   background: var(--bg-light);
-  border: 4px solid var(--border-brown);
+  border: 2px solid var(--border-gold);
   border-radius: 12px;
-  padding: 30px;
+  padding: 25px;
   text-align: center;
-  box-shadow: 8px 8px 0px rgba(141, 110, 99, 0.4);
-  max-width: 300px;
+  box-shadow: 0 8px 32px rgba(184, 134, 11, 0.2);
+  max-width: 280px;
   position: relative;
 }
 
 .modal-content h4 {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 14px;
-  color: var(--primary-green);
-  margin: 0 0 20px 0;
+  font-size: 16px;
+  color: var(--primary-gold);
+  margin: 0 0 18px 0;
+  font-weight: 600;
 }
 
 .modal-close {
   position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 28px;
+  right: 12px;
+  top: 8px;
+  font-size: 24px;
   font-weight: bold;
   color: var(--text-gray);
   cursor: pointer;
@@ -494,75 +486,75 @@ body {
 }
 
 .modal-close:hover {
-  color: var(--primary-green);
+  color: var(--primary-gold);
 }
 
 .wechat-qr {
-  width: 200px;
-  height: 200px;
-  border: 3px solid var(--border-light);
+  width: 180px;
+  height: 180px;
+  border: 2px solid var(--border-light);
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .modal-content p {
   font-size: 13px;
   color: var(--text-gray);
   margin: 0;
-  font-family: 'Courier New', monospace;
 }
 
 /* ===================================
-   导航栏复古样式
+   导航栏样式
    =================================== */
 .header {
   background: var(--bg-light);
-  border-bottom: 4px solid var(--border-brown);
-  padding: 15px 0;
+  border-bottom: 2px solid var(--border-gold);
+  padding: 12px 0;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.1);
 }
 
 .nav {
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
 .logo a {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
   font-size: 20px;
-  color: var(--primary-green);
+  color: var(--primary-gold);
   text-decoration: none;
-  text-shadow: 2px 2px 0px rgba(46, 125, 50, 0.2);
+  font-weight: 600;
 }
 
 #menu {
   display: flex;
-  gap: 25px;
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 #menu li a {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dark);
-  padding: 8px 16px;
-  border: 2px solid transparent;
+  padding: 6px 12px;
   border-radius: 4px;
   text-decoration: none;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
 }
 
 #menu li a:hover,
 #menu li a.active {
-  background: var(--primary-green);
+  background: var(--primary-gold);
   color: #fff;
-  border-color: var(--dark-green);
-  box-shadow: 2px 2px 0px rgba(141, 110, 99, 0.3);
 }
 
 /* ===================================
@@ -570,38 +562,35 @@ body {
    =================================== */
 #theme-toggle {
   background: transparent !important;
-  border: 2px solid var(--border-brown) !important;
-  box-shadow: 2px 2px 0px rgba(141, 110, 99, 0.3) !important;
+  border: 1px solid var(--border-gold) !important;
   border-radius: 4px !important;
-  padding: 6px 10px !important;
+  padding: 5px 8px !important;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
 }
 
 #theme-toggle:hover {
-  background: var(--primary-green) !important;
-  border-color: var(--dark-green) !important;
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0px rgba(141, 110, 99, 0.3);
+  background: var(--primary-gold) !important;
+  border-color: var(--dark-gold) !important;
 }
 
 #theme-toggle svg {
-  fill: var(--text-dark);
-  transition: fill 0.2s ease;
+  stroke: var(--text-dark);
+  transition: stroke 0.2s ease;
 }
 
 #theme-toggle:hover svg {
-  fill: #fff;
+  stroke: #fff;
 }
 
 /* ===================================
    回到顶部按钮
    =================================== */
 .top-link {
-  background: var(--primary-green) !important;
-  border: 3px solid var(--border-brown) !important;
-  border-radius: 4px !important;
-  box-shadow: 3px 3px 0px rgba(141, 110, 99, 0.4) !important;
+  background: var(--primary-gold) !important;
+  border: 2px solid var(--border-gold) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.2) !important;
   bottom: 30px !important;
   right: 30px !important;
   padding: 10px !important;
@@ -609,9 +598,9 @@ body {
 }
 
 .top-link:hover {
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 5px 5px 0px rgba(141, 110, 99, 0.5) !important;
-  background: var(--dark-green) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3) !important;
+  background: var(--dark-gold) !important;
 }
 
 .top-link svg {
@@ -623,24 +612,24 @@ body {
    =================================== */
 .footer {
   background: var(--bg-light);
-  border-top: 4px solid var(--border-brown);
+  border-top: 2px solid var(--border-gold);
   padding: 20px;
   margin-top: 40px;
   text-align: center;
-  font-family: 'Courier New', monospace;
   color: var(--text-gray);
+  font-size: 13px;
 }
 
 .footer a {
-  color: var(--primary-green);
-  font-weight: bold;
+  color: var(--primary-gold);
+  font-weight: 500;
 }
 
 /* ===================================
    通用链接样式
    =================================== */
 a {
-  color: var(--primary-green);
+  color: var(--primary-gold);
   transition: all 0.2s ease;
 }
 
@@ -648,12 +637,12 @@ a {
    代码块
    =================================== */
 code, pre, .highlight {
-  border: 2px solid var(--border-light) !important;
+  border: 1px solid var(--border-light) !important;
   border-radius: 4px !important;
 }
 
 pre, .highlight {
-  box-shadow: 3px 3px 0px rgba(141, 110, 99, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background: #2d2d2d !important;
 }
 
@@ -661,48 +650,46 @@ pre, .highlight {
    按钮通用样式
    =================================== */
 button, .btn, .button, .share-buttons button, .copy-code {
-  border: 3px solid var(--border-brown) !important;
+  border: 2px solid var(--border-gold) !important;
   border-radius: 4px !important;
-  box-shadow: 3px 3px 0px rgba(141, 110, 99, 0.3) !important;
-  font-family: 'Press Start 2P', 'Courier New', monospace !important;
-  font-size: 12px !important;
-  transition: all 0.1s ease !important;
+  box-shadow: 0 2px 4px rgba(184, 134, 11, 0.1) !important;
+  font-size: 13px !important;
+  transition: all 0.15s ease !important;
   cursor: pointer !important;
   background: var(--bg-light) !important;
   color: var(--text-dark) !important;
 }
 
 button:hover, .btn:hover, .button:hover, .share-buttons button:hover, .copy-code:hover {
-  transform: translate(-1px, -1px) !important;
-  box-shadow: 4px 4px 0px rgba(141, 110, 99, 0.3) !important;
-  background: var(--primary-green) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(184, 134, 11, 0.2) !important;
+  background: var(--primary-gold) !important;
   color: #fff !important;
 }
 
 button:active, .btn:active, .button:active, .share-buttons button:active, .copy-code:active {
-  transform: translate(2px, 2px) !important;
-  box-shadow: 1px 1px 0px rgba(141, 110, 99, 0.3) !important;
+  transform: translateY(0) !important;
+  box-shadow: 0 1px 2px rgba(184, 134, 11, 0.1) !important;
 }
 
 /* ===================================
    归档页面样式
    =================================== */
 .archive-content {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .archive-year {
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 }
 
 .archive-year-title {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 22px;
-  color: var(--primary-green);
-  margin: 0 0 20px 0;
-  padding-bottom: 10px;
-  border-bottom: 3px solid var(--border-light);
-  text-shadow: 1px 1px 0px rgba(46, 125, 50, 0.2);
+  font-size: 20px;
+  color: var(--primary-gold);
+  margin: 0 0 18px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-light);
+  font-weight: 600;
 }
 
 .archive-month-list {
@@ -712,17 +699,17 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 .archive-month {
-  margin-bottom: 20px;
-  padding-left: 20px;
+  margin-bottom: 18px;
+  padding-left: 18px;
   border-left: 2px solid var(--border-light);
 }
 
 .archive-month-name {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
   font-size: 14px;
   color: var(--text-dark);
   margin-bottom: 10px;
   display: block;
+  font-weight: 500;
 }
 
 .archive-post-list {
@@ -741,11 +728,10 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   content: '•';
   position: absolute;
   left: 0;
-  color: var(--primary-green);
+  color: var(--primary-gold);
 }
 
 .archive-post-date {
-  font-family: 'Courier New', monospace;
   font-size: 12px;
   color: var(--text-gray);
   margin-right: 10px;
@@ -759,7 +745,57 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 .archive-post-title:hover {
-  color: var(--primary-green);
+  color: var(--primary-gold);
+}
+
+/* ===================================
+   文章详情页
+   =================================== */
+.post-single {
+  background: var(--bg-light);
+  border: 2px solid var(--border-gold);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(184, 134, 11, 0.1);
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 900px;
+}
+
+.post-title {
+  font-size: 28px;
+  color: var(--primary-gold);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.post-meta {
+  color: var(--text-gray);
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.post-content {
+  line-height: 1.8;
+}
+
+.post-content h1, .post-content h2, .post-content h3 {
+  color: var(--primary-gold);
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.post-content p {
+  margin-bottom: 18px;
+}
+
+.post-content ul, .post-content ol {
+  margin-bottom: 18px;
+  padding-left: 25px;
+}
+
+.post-content li {
+  margin-bottom: 8px;
 }
 
 /* ===================================
@@ -780,16 +816,16 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   }
   
   .post-entry h2 {
-    font-size: 14px;
+    font-size: 16px;
   }
   
   #menu {
-    gap: 12px;
+    gap: 10px;
   }
   
   #menu li a {
-    font-size: 11px;
-    padding: 6px 10px;
+    font-size: 13px;
+    padding: 5px 8px;
   }
   
   .widget {
@@ -799,5 +835,9 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   .top-link {
     bottom: 20px !important;
     right: 20px !important;
+  }
+  
+  .header-social-links {
+    margin-left: 10px;
   }
 }
