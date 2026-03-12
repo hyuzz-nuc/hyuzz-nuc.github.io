@@ -496,6 +496,16 @@ body {
   color: var(--primary-gold);
 }
 
+/* 深色模式搜索结果 */
+[data-theme="dark"] .search-result-item {
+  background: var(--bg-widget);
+  border-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .search-result-item a {
+  color: var(--text-primary);
+}
+
 /* ===================================
    最近文章组件
    =================================== */
@@ -522,6 +532,17 @@ body {
   background: var(--bg-warm);
   border-color: var(--primary-gold);
   transform: translateX(3px);
+}
+
+/* 深色模式最近发表 */
+[data-theme="dark"] .recent-posts-list li {
+  background: var(--bg-widget);
+  border-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .recent-posts-list li:hover {
+  background: var(--bg-card);
+  border-color: var(--primary-gold);
 }
 
 .recent-posts-list a {
@@ -935,6 +956,11 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   margin-top: 25px;
 }
 
+/* 深色模式归档内容区 */
+[data-theme="dark"] .archive-content {
+  color: var(--text-primary);
+}
+
 .archive-year {
   margin-bottom: 35px;
 }
@@ -948,6 +974,24 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   font-weight: 600;
 }
 
+/* 深色模式归档页面 */
+[data-theme="dark"] .archive-year-title {
+  color: var(--primary-gold);
+  border-bottom-color: var(--border-primary);
+}
+
+[data-theme="dark"] .archive-month-name {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .archive-post-date {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .archive-post-title {
+  color: var(--text-primary);
+}
+
 .archive-month-list {
   list-style: none;
   padding: 0;
@@ -958,6 +1002,11 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   margin-bottom: 18px;
   padding-left: 18px;
   border-left: 2px solid var(--border-light);
+}
+
+/* 深色模式归档月份 */
+[data-theme="dark"] .archive-month {
+  border-left-color: var(--border-primary);
 }
 
 .archive-month-name {
@@ -984,6 +1033,10 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   content: '•';
   position: absolute;
   left: 0;
+  color: var(--primary-gold);
+}
+
+[data-theme="dark"] .archive-post-list li::before {
   color: var(--primary-gold);
 }
 
@@ -1021,6 +1074,23 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   padding: 30px;
   margin: 30px auto;
   max-width: 900px;
+}
+
+/* 深色模式文章详情页 */
+[data-theme="dark"] .post-single {
+  background: var(--bg-card);
+  border-color: var(--border-primary);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .post-content {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .post-content h1,
+[data-theme="dark"] .post-content h2,
+[data-theme="dark"] .post-content h3 {
+  color: var(--primary-gold);
 }
 
 .post-title {
