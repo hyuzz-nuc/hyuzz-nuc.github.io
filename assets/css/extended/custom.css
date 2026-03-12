@@ -163,7 +163,7 @@ body {
   background: transparent !important;
 }
 
-/* 左右分割线 - 桌面端显示 */
+/* 桌面端显示分割线 */
 @media (min-width: 901px) {
   .home-layout::before {
     content: '';
@@ -176,16 +176,22 @@ body {
   }
 }
 
-/* 移动端隐藏分割线 */
+/* 移动端彻底隐藏分割线 + 布局调整 */
 @media (max-width: 900px) {
   .home-layout {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 15px;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 0 15px !important;
   }
   
   .home-layout::before {
+    content: none !important;
     display: none !important;
+    border: none !important;
+  }
+  
+  .home-layout::after {
+    content: none !important;
   }
 }
 
