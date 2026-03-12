@@ -7,6 +7,292 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* ===================================
+   首页三栏布局
+   =================================== */
+.home-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.sidebar-left, .sidebar-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-content {
+  min-width: 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 1024px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar-left, .sidebar-right {
+    order: 2;
+  }
+  
+  .main-content {
+    order: 1;
+  }
+}
+
+/* ===================================
+   小组件通用样式
+   =================================== */
+.widget {
+  background: #fffef9;
+  border: 3px solid #5c4033;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.3);
+  padding: 15px;
+}
+
+.widget-title {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 13px;
+  color: #c41e3a;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #d4c4a8;
+  text-shadow: 1px 1px 0px rgba(92, 64, 51, 0.2);
+}
+
+/* ===================================
+   博客统计组件
+   =================================== */
+.stats-widget .stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-widget li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed #d4c4a8;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+}
+
+.stats-widget li:last-child {
+  border-bottom: none;
+}
+
+.stat-icon {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.stat-label {
+  color: #888;
+  flex: 1;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: #c41e3a;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.busuanzi-number {
+  color: #c41e3a;
+  text-shadow: 1px 1px 0px #8b0000;
+}
+
+/* ===================================
+   最近文章组件
+   =================================== */
+.recent-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-posts-list li {
+  margin-bottom: 12px;
+  padding: 8px;
+  background: #f9f6ed;
+  border: 2px solid #d4c4a8;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.recent-posts-list li:hover {
+  background: #f0e6d2;
+  border-color: #c41e3a;
+  transform: translate(-2px, -2px);
+  box-shadow: 2px 2px 0px rgba(196, 30, 58, 0.2);
+}
+
+.recent-posts-list a {
+  color: #5c4033;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.recent-posts-list a:hover {
+  color: #c41e3a;
+}
+
+.recent-posts-date {
+  display: block;
+  font-size: 11px;
+  color: #888;
+  font-family: 'Courier New', monospace;
+}
+
+/* ===================================
+   搜索组件
+   =================================== */
+.search-box {
+  display: flex;
+  gap: 8px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #5c4033;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  background: #f9f6ed;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #c41e3a;
+  background: #fff;
+}
+
+.search-btn {
+  padding: 8px 16px;
+  background: #c41e3a;
+  color: #fff;
+  border: 2px solid #8b0000;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.search-btn:hover {
+  background: #8b0000;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.3);
+}
+
+.search-results {
+  margin-top: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  padding: 8px;
+  margin-bottom: 5px;
+  background: #f9f6ed;
+  border: 1px solid #d4c4a8;
+  border-radius: 4px;
+}
+
+.search-result-item a {
+  color: #5c4033;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.search-result-item a:hover {
+  color: #c41e3a;
+}
+
+/* ===================================
+   标签云组件
+   =================================== */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-item {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #f0e6d2;
+  border: 2px solid #5c4033;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  color: #5c4033;
+  text-decoration: none;
+  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.2);
+  transition: all 0.1s ease;
+}
+
+.tag-item:hover {
+  background: #c41e3a;
+  color: #fff;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3);
+}
+
+/* ===================================
+   分类组件
+   =================================== */
+.categories-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories-list li {
+  margin-bottom: 8px;
+}
+
+.categories-list a {
+  display: block;
+  padding: 8px 12px;
+  background: #f9f6ed;
+  border: 2px solid #d4c4a8;
+  border-radius: 4px;
+  color: #5c4033;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.1s ease;
+}
+
+.categories-list a:hover {
+  background: #c41e3a;
+  color: #fff;
+  border-color: #8b0000;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.2);
+}
+
+/* ===================================
+   文章列表样式
+   =================================== */
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===================================
    全局背景
    =================================== */
 body {

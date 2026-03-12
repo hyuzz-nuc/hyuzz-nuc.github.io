@@ -1,16 +1,148 @@
 {{- define "main" }}
-{{- if .Site.Params.homeInfoParams }}
-{{- partial "home_info.html" . }}
+
+<!-- 首页三栏布局 -->
+<div class="home-layout">
+  
+  <!-- 左侧边栏 -->
+  <aside class="sidebar-left">
+    <!-- 博客统计 -->
+    <div class="widget stats-widget">
+      <h3 class="widget-title">📊 博客统计</h3>
+      <ul class="stats-list">
+        <li>
+          <span class="stat-icon">📄</span>
+          <span class="stat-label">文章数量：</span>
+          <span class="stat-value">{{ len .Site.RegularPages }}</span>
+        </li>
+        <li>
+          <span class="stat-icon">👁️</span>
+          <span class="stat-label">访问人数：</span>
+          <span id="busuanzi_value_site_uv" class="stat-value busuanzi-number">-</span>
+        </li>
+        <li>
+          <span class="stat-icon">📖</span>
+          <span class="stat-label">总访问量：</span>
+          <span id="busuanzi_value_site_pv" class="stat-value busuanzi-number">-</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 最近文章 -->
+    <div class="widget recent-posts-widget">
+      <h3 class="widget-title">📜 最近发表</h3>
+      <ul class="recent-posts-list">
+        {{ range first 5 (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          <span class="recent-posts-date">{{ .Date.Format "2006-01-02" }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </aside>
+
+  <!-- 中间文章列表 -->
+  <main class="main-content">
+    {{- if .Site.Params.homeInfoParams }}
+    {{- partial "home_info.html" . }}
+    {{- end }}
+
+    {{- $posts := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+    {{- if gt $posts.TotalPages 0 }}
+    <div class="article-list">
+      {{- range $posts.Pages }}
+      {{- .Render "summary" }}
+      {{- end }}
+    </div>
+    
+    <!-- 分页 -->
+    {{- if gt $posts.TotalPages 1 }}
+    {{- partial "pagination.html" . }}
+    {{- end }}
+    {{- end }}
+  </main>
+
+  <!-- 右侧边栏 -->
+  <aside class="sidebar-right">
+    <!-- 搜索框 -->
+    {{- if site.Params.enableSearch }}
+    <div class="widget search-widget">
+      <h3 class="widget-title">🔍 搜索</h3>
+      <div class="search-box">
+        <input type="text" id="search-input" class="search-input" placeholder="输入关键词..." aria-label="搜索">
+        <button id="search-btn" class="search-btn">搜索</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+    {{- end }}
+
+    <!-- 标签云 -->
+    <div class="widget tags-widget">
+      <h3 class="widget-title">🏷️ 标签</h3>
+      <div class="tag-cloud">
+        {{- range $name, $taxonomy := .Site.Taxonomies.tags }}
+        {{- with $.Site.GetPage (printf "/tags/%s" $name) }}
+        <a href="{{ .Permalink }}" class="tag-item">{{ .Title | default $name }}</a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+
+    <!-- 分类 -->
+    <div class="widget categories-widget">
+      <h3 class="widget-title">📁 分类</h3>
+      <ul class="categories-list">
+        {{- range $name, $taxonomy := .Site.Taxonomies.categories }}
+        {{- with $.Site.GetPage (printf "/categories/%s" $name) }}
+        <li><a href="{{ .Permalink }}">{{ .Title | default $name }}</a></li>
+        {{- end }}
+        {{- end }}
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<!-- 搜索功能脚本 -->
+{{- if site.Params.enableSearch }}
+<script>
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchResults = document.getElementById('search-results');
+  
+  // 简单的客户端搜索（也可以接入 fuse.js 等搜索库）
+  async function doSearch() {
+    const query = searchInput.value.trim();
+    if (!query) return;
+    
+    searchResults.innerHTML = '<p style="padding:10px;">搜索中...</p>';
+    
+    try {
+      const response = await fetch('/index.json');
+      const data = await response.json();
+      const results = data.filter(item => 
+        item.title.toLowerCase().includes(query.toLowerCase()) ||
+        (item.content && item.content.toLowerCase().includes(query.toLowerCase()))
+      ).slice(0, 5);
+      
+      if (results.length === 0) {
+        searchResults.innerHTML = '<p style="padding:10px;">未找到相关内容</p>';
+      } else {
+        searchResults.innerHTML = results.map(item => `
+          <div class="search-result-item">
+            <a href="${item.permalink}">${item.title}</a>
+          </div>
+        `).join('');
+      }
+    } catch (e) {
+      searchResults.innerHTML = '<p style="padding:10px;color:red;">搜索出错</p>';
+    }
+  }
+  
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') doSearch();
+  });
+</script>
 {{- end }}
 
-{{/* 最近文章模块 */}}
-{{- partial "recent-posts.html" . }}
-
-{{- $posts := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
-{{- if gt $posts.TotalPages 0 }}
-{{- range $posts.Pages }}
-{{- .Render "summary" }}
-{{- end }}
-{{- partial "pagination.html" . }}
-{{- end }}
 {{- end }}

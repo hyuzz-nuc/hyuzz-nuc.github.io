@@ -12,6 +12,10 @@ buildExpired = false
 enableEmoji = true
 paginate = 10
 
+# 输出配置（支持 JSON 搜索索引）
+[outputs]
+  home = ["HTML", "JSON"]
+
 # Taxonomy 配置（支持 series 合集）
 [taxonomies]
   tag = "tags"
