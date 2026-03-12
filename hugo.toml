@@ -35,20 +35,15 @@ paginate = 10
     url = "/posts/"
     weight = 2
   [[menu.main]]
-    identifier = "tags"
-    name = "标签"
-    url = "/tags/"
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
     weight = 3
-  [[menu.main]]
-    identifier = "categories"
-    name = "分类"
-    url = "/categories/"
-    weight = 4
   [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
-    weight = 5
+    weight = 4
 
 # 核心美化配置
 [params]
