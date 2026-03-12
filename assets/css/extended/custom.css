@@ -235,7 +235,7 @@ body {
 
 /* 深色模式文章卡片 */
 [data-theme="dark"] .post-entry {
-  background: var(--bg-card);
+  background: var(--bg-card) !important;
   border-color: var(--border-primary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -435,7 +435,7 @@ body {
 
 /* 深色模式小组件 */
 [data-theme="dark"] .widget {
-  background: var(--bg-widget);
+  background: var(--bg-widget) !important;
   border-color: var(--border-primary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -475,7 +475,7 @@ body {
 
 /* 深色模式搜索输入框 */
 [data-theme="dark"] .search-input {
-  background: var(--bg-widget);
+  background: var(--bg-widget) !important;
   color: var(--text-primary);
   border-color: var(--border-primary);
 }
@@ -537,7 +537,7 @@ body {
 
 /* 深色模式搜索结果 */
 [data-theme="dark"] .search-result-item {
-  background: var(--bg-widget);
+  background: var(--bg-widget) !important;
   border-color: var(--border-secondary);
 }
 
@@ -575,12 +575,12 @@ body {
 
 /* 深色模式最近发表 */
 [data-theme="dark"] .recent-posts-list li {
-  background: var(--bg-widget);
+  background: var(--bg-widget) !important;
   border-color: var(--border-secondary);
 }
 
 [data-theme="dark"] .recent-posts-list li:hover {
-  background: var(--bg-card);
+  background: var(--bg-card) !important;
   border-color: var(--primary-gold);
 }
 
@@ -633,7 +633,7 @@ body {
 
 /* 深色模式归档列表 */
 [data-theme="dark"] .archive-list a {
-  background: var(--bg-widget);
+  background: var(--bg-widget) !important;
   border-color: var(--border-secondary);
   color: var(--text-primary);
 }
@@ -1130,7 +1130,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 
 /* 深色模式文章详情页 */
 [data-theme="dark"] .post-single {
-  background: var(--bg-card);
+  background: var(--bg-card) !important;
   border-color: var(--border-primary);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
