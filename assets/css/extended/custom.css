@@ -29,6 +29,48 @@ body {
   font-size: 16px;
   color: var(--text-dark);
   line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===================================
+   两侧动漫人物装饰
+   =================================== */
+.page-decoration {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.page-decoration.left {
+  left: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.3), transparent);
+}
+
+.page-decoration.right {
+  right: 0;
+  background: linear-gradient(to left, rgba(255,255,255,0.3), transparent);
+}
+
+.page-decoration img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+/* 移动端隐藏装饰 */
+@media (max-width: 1200px) {
+  .page-decoration {
+    display: none;
+  }
 }
 
 /* ===================================

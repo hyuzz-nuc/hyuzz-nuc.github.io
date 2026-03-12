@@ -1,3 +1,11 @@
+<!-- 两侧装饰人物 -->
+<div class="page-decoration left">
+  <img src="https://cdn.jsdelivr.net/gh/hyuzz-nuc/hyuzz-nuc.github.io@main/images/anime-girl-left.png" alt="" onerror="this.style.display='none'">
+</div>
+<div class="page-decoration right">
+  <img src="https://cdn.jsdelivr.net/gh/hyuzz-nuc/hyuzz-nuc.github.io@main/images/anime-girl-right.png" alt="" onerror="this.style.display='none'">
+</div>
+
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -77,3 +85,8 @@
     document.getElementById('wechat-modal').style.display = 'none';
   }
 </script>
+
+<!-- 樱花飘落特效 -->
+{{- if not .Site.Params.disableThemeToggle }}
+<script src="/js/sakura.js" defer></script>
+{{- end }}
