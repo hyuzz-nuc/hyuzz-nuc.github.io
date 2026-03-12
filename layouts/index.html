@@ -1,10 +1,51 @@
 {{- define "main" }}
 
-<!-- 首页三栏布局 -->
+<!-- 左右分栏布局 -->
 <div class="home-layout">
   
-  <!-- 左侧边栏 -->
-  <aside class="sidebar-left">
+  <!-- 左侧文章列表 -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>📝 全部文章</h1>
+    </div>
+
+    {{- $posts := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+    {{- if gt $posts.TotalPages 0 }}
+    <div class="article-list">
+      {{- range $posts.Pages }}
+      <article class="post-entry">
+        <header class="entry-header">
+          <h2>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+        </header>
+        <div class="entry-content">
+          <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+        </div>
+        <footer class="entry-footer">
+          <span class="post-meta">
+            📅 {{ .Date.Format "2006-01-02" }}
+            &nbsp;·&nbsp;
+            ⏱️ {{ .ReadingTime }} 分钟阅读
+            {{- with .Params.tags }}
+            &nbsp;·&nbsp;
+            🏷️ {{ range first 3 . }}<span class="tag-inline">{{ . }}</span> {{ end }}
+            {{- end }}
+          </span>
+        </footer>
+      </article>
+      {{- end }}
+    </div>
+    
+    <!-- 分页 -->
+    {{- if gt $posts.TotalPages 1 }}
+    {{- partial "pagination.html" . }}
+    {{- end }}
+    {{- end }}
+  </main>
+
+  <!-- 右侧边栏 -->
+  <aside class="sidebar-right">
     <!-- 博客统计 -->
     <div class="widget stats-widget">
       <h3 class="widget-title">📊 博客统计</h3>
@@ -27,55 +68,6 @@
       </ul>
     </div>
 
-    <!-- 最近文章 -->
-    <div class="widget recent-posts-widget">
-      <h3 class="widget-title">📜 最近发表</h3>
-      <ul class="recent-posts-list">
-        {{ range first 5 (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
-        <li>
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-          <span class="recent-posts-date">{{ .Date.Format "2006-01-02" }}</span>
-        </li>
-        {{ end }}
-      </ul>
-    </div>
-  </aside>
-
-  <!-- 中间文章列表 -->
-  <main class="main-content">
-    <div class="page-header">
-      <h1>📝 全部文章</h1>
-    </div>
-
-    {{- $posts := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
-    {{- if gt $posts.TotalPages 0 }}
-    <div class="article-list">
-      {{- range $posts.Pages }}
-      <article class="post-entry">
-        <header class="entry-header">
-          <h2>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </h2>
-        </header>
-        <div class="entry-content">
-          <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-        </div>
-        <footer class="entry-footer">
-          <span class="post-meta">{{ .Date.Format "2006-01-02" }} · {{ .ReadingTime }} 分钟阅读</span>
-        </footer>
-      </article>
-      {{- end }}
-    </div>
-    
-    <!-- 分页 -->
-    {{- if gt $posts.TotalPages 1 }}
-    {{- partial "pagination.html" . }}
-    {{- end }}
-    {{- end }}
-  </main>
-
-  <!-- 右侧边栏 -->
-  <aside class="sidebar-right">
     <!-- 搜索框 -->
     <div class="widget search-widget">
       <h3 class="widget-title">🔍 搜索</h3>
@@ -107,6 +99,19 @@
         <li><a href="{{ .Permalink }}">{{ .Title | default $name }}</a></li>
         {{- end }}
         {{- end }}
+      </ul>
+    </div>
+
+    <!-- 最近文章 -->
+    <div class="widget recent-posts-widget">
+      <h3 class="widget-title">📜 最近发表</h3>
+      <ul class="recent-posts-list">
+        {{ range first 5 (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          <span class="recent-posts-date">{{ .Date.Format "2006-01-02" }}</span>
+        </li>
+        {{ end }}
       </ul>
     </div>
   </aside>
