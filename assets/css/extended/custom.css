@@ -1497,15 +1497,36 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
     font-size: 14px;
   }
   
-  /* 搜索框优化 */
+  /* 搜索框优化 - 移动端全宽 */
+  .search-box {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
   .search-input {
+    width: 100%;
     font-size: 14px;
-    padding: 8px 10px;
+    padding: 10px 12px;
+    box-sizing: border-box;
   }
   
   .search-btn {
-    padding: 8px 12px;
-    font-size: 13px;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  /* 搜索结果优化 */
+  .search-results {
+    max-height: 250px;
+  }
+  
+  .search-result-item {
+    padding: 10px;
+  }
+  
+  .search-result-item a {
+    font-size: 14px;
   }
   
   /* 最近文章列表 */
@@ -1603,6 +1624,22 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
     padding: 15px 20px;
     font-size: 13px;
     max-width: 80%;
+  }
+  
+  /* Giscus 评论区移动端适配 */
+  .giscus-comments {
+    padding: 0 10px;
+    overflow-x: hidden;
+  }
+  
+  .giscus-comments h3 {
+    font-size: 16px;
+  }
+  
+  /* 确保 Giscus iframe 自适应 */
+  .giscus-comments iframe {
+    width: 100% !important;
+    min-width: 100% !important;
   }
 }
 
