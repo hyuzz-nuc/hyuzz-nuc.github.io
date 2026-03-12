@@ -50,7 +50,7 @@ body {
 .home-layout {
   display: grid;
   grid-template-columns: 1fr 300px;
-  gap: 40px;
+  gap: 50px;
   max-width: 1200px;
   margin: 30px auto;
   padding: 0 20px;
@@ -58,19 +58,15 @@ body {
   position: relative;
 }
 
-/* 左右分割线 */
+/* 左右分割线 - 与导航栏分割线样式一致 */
 .home-layout::before {
   content: '';
   position: absolute;
-  left: calc(100% - 300px - 20px);
+  left: calc(100% - 300px - 25px);
   top: 0;
   bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, 
-    transparent 0%, 
-    var(--border-gold) 5%, 
-    var(--border-gold) 95%, 
-    transparent 100%);
+  width: 2px;
+  background: var(--primary-gold);
 }
 
 .main-content {
