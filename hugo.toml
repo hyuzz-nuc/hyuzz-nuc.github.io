@@ -57,7 +57,7 @@ paginate = 10
   # 作者信息
   author = "hyuzz"
   authorImage = "/images/avatar.png"
-  authorDesc = "一名热爱编程的学习者"
+  authorDesc = "专注技术分享 · 记录成长点滴"
   # 封面配置
   cover.enabled = true
   cover.responsiveImages = true
