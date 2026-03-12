@@ -40,10 +40,10 @@ body {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 350px;
+  width: 500px;
   pointer-events: none;
   z-index: 100;
-  opacity: 0.95;
+  opacity: 1;
   transition: opacity 0.3s ease;
   border: none !important;
   box-shadow: none !important;
