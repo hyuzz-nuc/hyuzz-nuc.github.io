@@ -41,59 +41,7 @@
   </main>
 
   <!-- 右侧边栏 -->
-  <aside class="sidebar-right">
-    <!-- 博客统计 -->
-    <div class="stats-simple">
-      <div class="stat-item">
-        <span class="stat-label">📄 文章数量：</span>
-        <span class="stat-value">{{ len .Site.RegularPages }}</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">👁️ 访问人数：</span>
-        <span id="busuanzi_value_site_uv" class="stat-value busuanzi-number">-</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-label">📖 总访问量：</span>
-        <span id="busuanzi_value_site_pv" class="stat-value busuanzi-number">-</span>
-      </div>
-    </div>
-
-    <!-- 搜索框 -->
-    <div class="widget search-widget">
-      <h3 class="widget-title">🔍 搜索</h3>
-      <div class="search-box">
-        <input type="text" id="search-input" class="search-input" placeholder="输入关键词..." aria-label="搜索">
-        <button id="search-btn" class="search-btn">搜索</button>
-      </div>
-      <div id="search-results" class="search-results"></div>
-    </div>
-
-    <!-- 最近发表 -->
-    <div class="widget recent-posts-widget">
-      <h3 class="widget-title">📜 最近发表</h3>
-      <ul class="recent-posts-list">
-        {{ range first 5 (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
-        <li>
-          <a href="{{ .Permalink }}">{{ .Title }}</a>
-          <span class="recent-posts-date">{{ .Date.Format "2006-01-02" }}</span>
-        </li>
-        {{ end }}
-      </ul>
-    </div>
-
-    <!-- 归档 -->
-    <div class="widget archive-widget">
-      <h3 class="widget-title">📁 归档</h3>
-      <ul class="archive-list">
-        {{- range .Site.RegularPages.GroupByDate "2006-01" }}
-        <li>
-          <a href="/archives/#{{ .Key }}">{{ .Key }}</a>
-          <span class="archive-count">({{ len .Pages }})</span>
-        </li>
-        {{- end }}
-      </ul>
-    </div>
-  </aside>
+  {{- partial "sidebar-right.html" . }}
 </div>
 
 <!-- 微信二维码弹窗 -->
