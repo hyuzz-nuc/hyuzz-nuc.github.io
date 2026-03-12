@@ -80,6 +80,10 @@ paginate = 10
   ShowShareButtons = true
   ShowToc = true
   TocOpen = false
+  # LeanCloud 点赞配置（需要替换成自己的）
+  [params.likeCloud]
+    appId = "YOUR_APP_ID"
+    appKey = "YOUR_APP_KEY"
   # 页脚配置
   footer.showReadingTime = true
   footer.showWordCount = true

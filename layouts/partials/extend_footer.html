@@ -6,3 +6,12 @@
   <span class="busuanzi-text">访问量：</span>
   <span id="busuanzi_value_site_pv" class="busuanzi-number">0</span>
 </div>
+
+{{/* 文章点赞 */}}
+{{- if .IsPage }}
+  {{ partial "like-button.html" . }}
+{{- end }}
+
+{{/* 博客功能 JS */}}
+{{- $features := resources.Get "js/blog-features.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $features.RelPermalink }}" integrity="{{ $features.Data.Integrity }}"></script>

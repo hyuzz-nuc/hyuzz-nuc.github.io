@@ -1260,3 +1260,161 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
     margin-left: 10px;
   }
 }
+
+/* ===================================
+   阶段 3 新增功能样式
+   =================================== */
+
+/* --- 阅读进度条 --- */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+/* --- 文章目录折叠/展开 --- */
+.toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toc-toggle {
+  font-size: 12px;
+  color: var(--text-gray);
+  padding: 2px 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toc-toggle:hover {
+  background: var(--primary-gold);
+  color: #fff;
+  border-color: var(--primary-gold);
+}
+
+.toc-content {
+  max-height: 500px;
+  overflow-y: auto;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.toc-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* --- 随机文章按钮 --- */
+.random-post-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--primary-gold);
+  color: #fff;
+  border: 2px solid var(--dark-gold);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.random-post-btn:hover {
+  background: var(--dark-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(184, 134, 11, 0.2);
+}
+
+.random-post-btn:active {
+  transform: translateY(0);
+}
+
+/* --- 文章点赞 --- */
+.like-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--border-light);
+}
+
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid var(--border-gold);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.like-btn:hover {
+  background: var(--primary-gold);
+  border-color: var(--primary-gold);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.like-btn.liked {
+  background: #ff6b6b;
+  border-color: #ff6b6b;
+  color: #fff;
+}
+
+.like-btn.liked:hover {
+  background: #ee5a5a;
+  border-color: #ee5a5a;
+}
+
+.like-icon {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.like-btn.liked .like-icon {
+  animation: like-heartbeat 0.6s ease;
+}
+
+@keyframes like-heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+.like-count {
+  font-size: 14px;
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+/* 深色模式点赞 */
+[data-theme="dark"] .like-btn {
+  color: var(--text-primary);
+  border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .like-container {
+  border-top-color: var(--border-primary);
+}
+
+[data-theme="dark"] .like-count {
+  color: var(--text-secondary);
+}

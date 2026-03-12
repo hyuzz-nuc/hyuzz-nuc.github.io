@@ -1,0 +1,17 @@
+{{/* 文章点赞组件 - 用于文章详情页底部 */}}
+{{- if .IsPage }}
+<div class="like-container">
+  <button id="like-btn" 
+          class="like-btn" 
+          data-app-id="{{ .Site.Params.likeCloud.appId }}"
+          data-app-key="{{ .Site.Params.likeCloud.appKey }}"
+          data-article-id="{{ .File.UniqueID }}"
+          data-article-title="{{ .Title }}"
+          title="给文章点赞">
+    <span class="like-icon">🤍</span>
+    <span class="like-text">点赞</span>
+  </button>
+  <span class="like-count" id="like-count">0</span>
+  <span class="like-label">人觉得这篇文章不错</span>
+</div>
+{{- end }}
