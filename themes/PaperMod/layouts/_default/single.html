@@ -60,7 +60,7 @@
   <!-- Giscus 评论区（支持深色模式切换） -->
   <div class="giscus-comments" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-light);">
     <h3 style="margin-bottom: 20px; font-size: 1.2rem; color: var(--primary-gold);">💬 评论区</h3>
-    <script src="https://giscus.app/client.js"
+    <script class="giscus-script" src="https://giscus.app/client.js"
       data-repo="hyuzz-nuc/hyuzz-nuc.github.io"
       data-repo-id="R_kgDORh6uuA"
       data-category="Announcements"
@@ -70,7 +70,7 @@
       data-reactions-enabled="1"
       data-emit-metadata="0"
       data-input-position="bottom"
-      data-theme="preferred_color_scheme"
+      data-theme="light"
       data-lang="zh-CN"
       crossorigin="anonymous"
       async>
@@ -78,31 +78,42 @@
   </div>
   
   <script>
-    // Giscus 深色模式切换支持
+    // Giscus 深色模式切换支持 - 官方推荐方式
     function updateGiscusTheme() {
-      const giscusFrame = document.querySelector('iframe.giscus-frame');
-      if (!giscusFrame) return;
+      const isDark = document.documentElement.dataset.theme === 'dark';
+      const theme = isDark ? 'dark' : 'light';
       
-      const isDark = document.documentElement.dataset.theme === 'dark' ||
-                     (!document.documentElement.dataset.theme &&
-                      window.matchMedia('(prefers-color-scheme: dark)').matches);
+      // 更新 script 属性
+      const giscusScript = document.querySelector('.giscus-script');
+      if (giscusScript) {
+        giscusScript.setAttribute('data-theme', theme);
+      }
       
-      giscusFrame.contentWindow.postMessage({
-        giscus: {
-          setConfig: {
-            theme: isDark ? 'dark' : 'light'
-          }
-        }
-      }, 'https://giscus.app');
+      // 发送消息给 iframe（Giscus 官方推荐）
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (iframe) {
+        iframe.contentWindow.postMessage(
+          { giscus: { setConfig: { theme: theme } } },
+          'https://giscus.app'
+        );
+      }
     }
     
-    // 延迟初始化（等 Giscus 加载完成）
-    setTimeout(updateGiscusTheme, 1500);
+    // 初始加载（等 Giscus iframe 准备好）
+    let giscusLoaded = false;
+    window.addEventListener('message', function(event) {
+      if (event.origin !== 'https://giscus.app') return;
+      if (giscusLoaded) return;
+      giscusLoaded = true;
+      
+      // Giscus 加载完成后应用当前主题
+      setTimeout(updateGiscusTheme, 100);
+    });
     
-    // 监听主题切换
+    // 监听主题切换按钮
     document.addEventListener('click', function(e) {
       if (e.target.closest('#theme-toggle')) {
-        setTimeout(updateGiscusTheme, 300);
+        setTimeout(updateGiscusTheme, 200);
       }
     });
   </script>
