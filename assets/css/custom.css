@@ -1,11 +1,14 @@
 /* ===================================
    复古卡通风博客 - 自定义样式
+   PaperMod 主题适配版
    =================================== */
 
 /* --- 像素字体引入 --- */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* --- 全局复古背景 --- */
+/* ===================================
+   全局背景
+   =================================== */
 body {
   background-color: #f5f0e6;
   background-image: url('/images/background/pixel_bg_desktop.png');
@@ -21,89 +24,187 @@ body {
   }
 }
 
-/* --- 主容器复古窗口样式 --- */
-.main, .home {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
+/* ===================================
+   主容器 - 复古窗口样式
+   =================================== */
+.main, .home, .page-header, .post-single, .post-entry {
   background: #fffef9;
   border: 4px solid #5c4033;
   border-radius: 8px;
   box-shadow: 6px 6px 0px rgba(92, 64, 51, 0.4);
 }
 
-/* --- 文章卡片复古边框 --- */
-.post-card, .main-post, .post-entry {
-  border: 3px solid #5c4033 !important;
-  border-radius: 8px !important;
-  box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.3) !important;
-  background: #fffef9 !important;
-  transition: all 0.2s ease !important;
+.post-single {
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 20px;
 }
 
-.post-card:hover, .post-entry:hover {
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 6px 6px 0px rgba(92, 64, 51, 0.4) !important;
+.post-entry {
+  margin: 20px 0;
+  padding: 20px;
+  transition: all 0.2s ease;
 }
 
-/* --- 导航栏复古样式 --- */
-.header, .nav {
+.post-entry:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px rgba(92, 64, 51, 0.5);
+}
+
+/* ===================================
+   导航栏
+   =================================== */
+.header {
   background: #f0e6d2;
   border-bottom: 4px solid #5c4033;
   padding: 15px 0;
+  border-radius: 8px 8px 0 0;
 }
 
-.nav-link {
+.nav {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
   font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 14px;
+  color: #c41e3a;
+  text-decoration: none;
+  text-shadow: 2px 2px 0px rgba(92, 64, 51, 0.2);
+}
+
+#menu {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu li a {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 11px;
   color: #5c4033;
   padding: 8px 16px;
   border: 2px solid transparent;
   border-radius: 4px;
+  text-decoration: none;
   transition: all 0.1s ease;
 }
 
-.nav-link:hover {
+#menu li a:hover,
+#menu li a.active {
   background: #c41e3a;
   color: #fff;
   border-color: #8b0000;
   box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.3);
 }
 
-/* --- 标题复古样式 --- */
+/* ===================================
+   标题样式
+   =================================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', 'Courier New', monospace;
   color: #c41e3a;
   text-shadow: 2px 2px 0px rgba(92, 64, 51, 0.2);
 }
 
-.post-title {
-  font-size: 24px;
-  line-height: 1.4;
+.post-title, .entry-hint-parent {
+  font-size: 22px;
+  line-height: 1.5;
 }
 
-/* --- 按钮复古样式 --- */
-button, .btn, .button, .share-buttons button {
+.page-header h1 {
+  font-size: 24px;
+}
+
+/* ===================================
+   按钮复古样式
+   =================================== */
+button, .btn, .button, .share-buttons button, .copy-code {
   border: 3px solid #5c4033 !important;
   border-radius: 4px !important;
   box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3) !important;
   font-family: 'Press Start 2P', 'Courier New', monospace !important;
-  font-size: 12px !important;
+  font-size: 11px !important;
   transition: all 0.1s ease !important;
   cursor: pointer !important;
+  background: #f0e6d2 !important;
+  color: #5c4033 !important;
 }
 
-button:hover, .btn:hover, .button:hover, .share-buttons button:hover {
+button:hover, .btn:hover, .button:hover, .share-buttons button:hover, .copy-code:hover {
   transform: translate(-1px, -1px) !important;
   box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.3) !important;
+  background: #c41e3a !important;
+  color: #fff !important;
 }
 
-button:active, .btn:active, .button:active, .share-buttons button:active {
+button:active, .btn:active, .button:active, .share-buttons button:active, .copy-code:active {
   transform: translate(2px, 2px) !important;
   box-shadow: 1px 1px 0px rgba(92, 64, 51, 0.3) !important;
 }
 
-/* --- 不蒜子访客统计 - 像素数字样式 --- */
+/* ===================================
+   主题切换按钮
+   =================================== */
+#theme-toggle {
+  background: transparent !important;
+  border: 2px solid #5c4033 !important;
+  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.3) !important;
+  border-radius: 4px !important;
+  padding: 5px 8px !important;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+#theme-toggle:hover {
+  background: #c41e3a !important;
+  border-color: #8b0000 !important;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3);
+}
+
+#theme-toggle svg {
+  fill: #5c4033;
+  transition: fill 0.2s ease;
+}
+
+#theme-toggle:hover svg {
+  fill: #fff;
+}
+
+/* ===================================
+   回到顶部按钮 - 复古改造
+   =================================== */
+.top-link {
+  background: #c41e3a !important;
+  border: 3px solid #5c4033 !important;
+  border-radius: 4px !important;
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.4) !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  padding: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.top-link:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 5px 5px 0px rgba(92, 64, 51, 0.5) !important;
+  background: #8b0000 !important;
+}
+
+.top-link svg {
+  fill: #fff;
+}
+
+/* ===================================
+   不蒜子访客统计 - 像素数字样式
+   =================================== */
 .busuanzi-container {
   display: inline-flex;
   align-items: center;
@@ -113,7 +214,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active {
   border: 3px solid #5c4033;
   border-radius: 4px;
   font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 11px;
   color: #5c4033;
   margin-top: 10px;
 }
@@ -132,7 +233,9 @@ button:active, .btn:active, .button:active, .share-buttons button:active {
   color: #888;
 }
 
-/* --- 最近文章模块样式 --- */
+/* ===================================
+   最近文章模块样式
+   =================================== */
 .recent-posts-widget {
   margin: 30px 0;
   padding: 20px;
@@ -144,7 +247,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active {
 
 .recent-posts-title {
   font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 16px;
+  font-size: 14px;
   color: #c41e3a;
   margin-bottom: 15px;
   text-shadow: 2px 2px 0px #8b0000;
@@ -184,23 +287,28 @@ button:active, .btn:active, .button:active, .share-buttons button:active {
 
 .recent-posts-date {
   display: block;
-  font-size: 11px;
+  font-size: 10px;
   color: #888;
   margin-top: 4px;
   font-family: 'Courier New', monospace;
 }
 
-/* --- 代码块复古边框 --- */
-code, pre {
-  border: 2px solid #d4c4a8;
-  border-radius: 4px;
+/* ===================================
+   代码块复古边框
+   =================================== */
+code, pre, .highlight {
+  border: 2px solid #d4c4a8 !important;
+  border-radius: 4px !important;
 }
 
-pre {
+pre, .highlight {
   box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.2);
+  background: #2d2d2d !important;
 }
 
-/* --- 链接复古样式 --- */
+/* ===================================
+   链接复古样式
+   =================================== */
 a {
   color: #c41e3a;
   text-decoration: none;
@@ -213,7 +321,9 @@ a:hover {
   border-bottom-style: solid;
 }
 
-/* --- 页脚复古样式 --- */
+/* ===================================
+   页脚复古样式
+   =================================== */
 .footer {
   background: #f0e6d2;
   border-top: 4px solid #5c4033;
@@ -222,254 +332,123 @@ a:hover {
   text-align: center;
   font-family: 'Courier New', monospace;
   color: #5c4033;
+  border-radius: 0 0 8px 8px;
 }
 
-/* --- 标签和分类 --- */
-.tags, .categories {
+.footer a {
+  color: #c41e3a;
+  font-weight: bold;
+}
+
+/* ===================================
+   标签和分类
+   =================================== */
+.post-tags, .tags, .categories {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin: 15px 0;
+  list-style: none;
+  padding: 0;
 }
 
-.tags li, .categories li {
+.post-tags li, .tags li, .categories li {
   list-style: none;
 }
 
-.tags a, .categories a {
+.post-tags a, .tags a, .categories a {
   display: inline-block;
   padding: 6px 12px;
   background: #f0e6d2;
   border: 2px solid #5c4033;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 11px;
   font-family: 'Press Start 2P', 'Courier New', monospace;
   box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.2);
   transition: all 0.1s ease;
+  text-decoration: none;
 }
 
-.tags a:hover, .categories a:hover {
+.post-tags a:hover, .tags a:hover, .categories a:hover {
   background: #c41e3a;
   color: #fff;
   transform: translate(-1px, -1px);
   box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3);
 }
 
-/* --- 移动端适配 --- */
+/* ===================================
+   文章元信息
+   =================================== */
+.post-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #888;
+  border-top: 2px dashed #d4c4a8;
+  border-bottom: 2px dashed #d4c4a8;
+  padding: 10px 0;
+  margin: 15px 0;
+}
+
+/* ===================================
+   分页
+   =================================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.pagination a {
+  padding: 10px 20px;
+  background: #f0e6d2;
+  border: 3px solid #5c4033;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 11px;
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.3);
+  transition: all 0.1s ease;
+}
+
+.pagination a:hover {
+  background: #c41e3a;
+  color: #fff;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px rgba(92, 64, 51, 0.3);
+}
+
+/* ===================================
+   移动端适配
+   =================================== */
 @media (max-width: 768px) {
-  .main, .home {
+  .post-single {
     margin: 10px;
     padding: 15px;
   }
   
-  .post-title {
+  .post-title, .entry-hint-parent {
+    font-size: 16px;
+  }
+  
+  .page-header h1 {
     font-size: 18px;
   }
   
-  .nav-link {
-    font-size: 10px;
+  #menu {
+    gap: 8px;
+  }
+  
+  #menu li a {
+    font-size: 9px;
     padding: 6px 10px;
   }
   
   .recent-posts-widget {
     padding: 15px;
   }
-}
-
-/* --- 导航栏复古样式 --- */
-.header, nav {
-  background: #fff8e7 !important;
-  border-bottom: 3px solid #5c4033 !important;
-}
-
-.nav-links a {
-  font-family: 'Press Start 2P', 'Courier New', monospace !important;
-  font-size: 12px !important;
-  color: #5c4033 !important;
-  padding: 8px 12px !important;
-  border: 2px solid transparent !important;
-  border-radius: 4px !important;
-  transition: all 0.2s ease !important;
-}
-
-.nav-links a:hover {
-  background: #f0e6d2 !important;
-  border-color: #c41e3a !important;
-  color: #c41e3a !important;
-}
-
-/* --- 标题复古样式 --- */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Press Start 2P', 'Courier New', monospace !important;
-  color: #5c4033 !important;
-  text-shadow: 2px 2px 0px rgba(196, 30, 58, 0.2) !important;
-  line-height: 1.6 !important;
-}
-
-h1 { font-size: 24px !important; }
-h2 { font-size: 20px !important; }
-h3 { font-size: 16px !important; }
-
-/* --- 链接样式 --- */
-a {
-  color: #c41e3a !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease !important;
-}
-
-a:hover {
-  color: #8b0000 !important;
-  text-decoration: underline !important;
-}
-
-/* --- 回到顶部按钮 --- */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: #c41e3a;
-  border: 3px solid #5c4033 !important;
-  border-radius: 4px !important;
-  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.4);
-  cursor: pointer;
-  display: none;
-  z-index: 1000;
-  transition: all 0.2s ease;
-}
-
-.back-to-top:hover {
-  background: #a01830;
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px rgba(92, 64, 51, 0.4);
-}
-
-.back-to-top:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px rgba(92, 64, 51, 0.4);
-}
-
-.back-to-top-arrow {
-  color: white;
-  font-size: 24px;
-  line-height: 44px;
-  text-align: center;
-  display: block;
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
-}
-
-/* --- 阅读进度条 --- */
-.reading-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 8px;
-  background: linear-gradient(90deg, #c41e3a, #ff6b6b);
-  border-bottom: 2px solid #5c4033;
-  z-index: 9999;
-  width: 0%;
-  transition: width 0.1s ease;
-}
-
-/* --- 文章目录复古样式 --- */
-.toc {
-  background: #fff8e7 !important;
-  border: 3px solid #5c4033 !important;
-  border-radius: 8px !important;
-  padding: 15px !important;
-  margin: 20px 0 !important;
-}
-
-.toc-title {
-  font-family: 'Press Start 2P', 'Courier New', monospace !important;
-  font-size: 14px !important;
-  color: #c41e3a !important;
-  margin-bottom: 10px !important;
-}
-
-.toc ul {
-  list-style: none !important;
-  padding-left: 10px !important;
-}
-
-.toc li {
-  margin: 8px 0 !important;
-  border-left: 2px solid #d4c4a8 !important;
-  padding-left: 10px !important;
-}
-
-.toc a {
-  font-size: 13px !important;
-  color: #5c4033 !important;
-}
-
-.toc a:hover {
-  color: #c41e3a !important;
-  border-left-color: #c41e3a !important;
-}
-
-/* --- 页脚复古样式 --- */
-footer {
-  background: #f0e6d2 !important;
-  border-top: 3px solid #5c4033 !important;
-  padding: 20px !important;
-  font-family: 'Courier New', monospace !important;
-}
-
-/* --- 代码块复古边框 --- */
-pre, code {
-  border: 2px solid #5c4033 !important;
-  border-radius: 4px !important;
-  background: #1e1e1e !important;
-}
-
-/* --- 标签和分类 --- */
-.post-tags, .post-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 15px 0;
-}
-
-.post-tag, .post-category {
-  display: inline-block;
-  padding: 6px 12px;
-  background: #f0e6d2;
-  border: 2px solid #5c4033;
-  border-radius: 4px;
-  font-size: 12px;
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  color: #5c4033;
-  transition: all 0.2s ease;
-}
-
-.post-tag:hover, .post-category:hover {
-  background: #c41e3a;
-  color: white;
-  transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.3);
-}
-
-/* --- 移动端适配 --- */
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-  }
   
-  .back-to-top-arrow {
-    line-height: 39px;
-  }
-  
-  h1 { font-size: 20px !important; }
-  h2 { font-size: 16px !important; }
-  h3 { font-size: 14px !important; }
-  
-  .recent-posts-widget {
-    padding: 15px;
+  .top-link {
+    bottom: 20px !important;
+    right: 20px !important;
   }
 }
