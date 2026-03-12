@@ -57,9 +57,9 @@
     {{- end }}
   </footer>
 
-  <!-- 手动添加 Giscus 评论区（核心修改：直接嵌入评论代码） -->
-  <div class="giscus-comments" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
-    <h3 style="margin-bottom: 20px; font-size: 1.2rem;">评论区</h3>
+  <!-- Giscus 评论区（支持深色模式切换） -->
+  <div class="giscus-comments" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-light);">
+    <h3 style="margin-bottom: 20px; font-size: 1.2rem; color: var(--primary-gold);">💬 评论区</h3>
     <script src="https://giscus.app/client.js"
       data-repo="hyuzz-nuc/hyuzz-nuc.github.io"
       data-repo-id="R_kgDORh6uuA"
@@ -76,6 +76,36 @@
       async>
     </script>
   </div>
+  
+  <script>
+    // Giscus 深色模式切换支持
+    function updateGiscusTheme() {
+      const giscusFrame = document.querySelector('iframe.giscus-frame');
+      if (!giscusFrame) return;
+      
+      const isDark = document.documentElement.dataset.theme === 'dark' ||
+                     (!document.documentElement.dataset.theme &&
+                      window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      giscusFrame.contentWindow.postMessage({
+        giscus: {
+          setConfig: {
+            theme: isDark ? 'dark' : 'light'
+          }
+        }
+      }, 'https://giscus.app');
+    }
+    
+    // 延迟初始化（等 Giscus 加载完成）
+    setTimeout(updateGiscusTheme, 1500);
+    
+    // 监听主题切换
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('#theme-toggle')) {
+        setTimeout(updateGiscusTheme, 300);
+      }
+    });
+  </script>
 
   {{- if (.Param "comments") }}
   {{- partial "comments.html" . }}

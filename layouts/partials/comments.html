@@ -1,0 +1,59 @@
+{{- /* Giscus 评论系统 - 支持深色模式自动切换 */ -}}
+{{- if and .Site.Params.comments.enabled (eq .Site.Params.comments.type "giscus") -}}
+{{- $giscus := .Site.Params.comments.giscus -}}
+<div id="giscus-comments" style="margin-top: 40px;">
+  <script src="https://giscus.app/client.js"
+          data-repo="{{ $giscus.repo }}"
+          data-repo-id="{{ $giscus.repoId }}"
+          data-category="{{ $giscus.category }}"
+          data-category-id="{{ $giscus.categoryId }}"
+          data-mapping="{{ $giscus.mapping }}"
+          data-strict="{{ $giscus.strict }}"
+          data-reactions-enabled="{{ $giscus.reactionsEnabled }}"
+          data-emit-metadata="{{ $giscus.emitMetadata }}"
+          data-input-position="{{ $giscus.inputPosition }}"
+          data-theme="preferred_color_scheme"
+          data-lang="{{ $giscus.lang }}"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
+
+{{- /* 监听主题切换事件 */ -}}
+<script>
+  // Giscus 主题切换函数
+  function updateGiscusTheme() {
+    const giscusFrame = document.querySelector('iframe.giscus-frame');
+    if (!giscusFrame) return;
+    
+    // 获取当前主题
+    const isDark = document.documentElement.dataset.theme === 'dark' ||
+                   (document.documentElement.dataset.theme === undefined &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    // 发送主题消息给 Giscus
+    giscusFrame.contentWindow.postMessage({
+      giscus: {
+        setConfig: {
+          theme: isDark ? 'dark' : 'light'
+        }
+      }
+    }, 'https://giscus.app');
+  }
+  
+  // 页面加载后初始化
+  window.addEventListener('load', function() {
+    setTimeout(updateGiscusTheme, 1000);
+  });
+  
+  // 监听主题切换按钮点击
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('#theme-toggle')) {
+      setTimeout(updateGiscusTheme, 300);
+    }
+  });
+  
+  // 监听系统主题变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateGiscusTheme);
+</script>
+{{- end -}}
