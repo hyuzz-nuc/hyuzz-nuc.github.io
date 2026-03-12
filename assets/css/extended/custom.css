@@ -38,9 +38,9 @@ body {
    =================================== */
 .page-decoration {
   position: fixed;
-  top: 0;
   bottom: 0;
   width: 500px;
+  height: 60vh;
   pointer-events: none;
   z-index: 100;
   opacity: 1;
@@ -65,10 +65,18 @@ body {
   left: 0;
   width: 100%;
   height: auto;
-  max-height: 95vh;
+  max-height: 100%;
   object-fit: contain;
   border: none !important;
   box-shadow: none !important;
+}
+
+/* 中等屏幕缩小人物 */
+@media (max-width: 1400px) {
+  .page-decoration {
+    width: 350px;
+    height: 50vh;
+  }
 }
 
 /* 移动端隐藏装饰 */
