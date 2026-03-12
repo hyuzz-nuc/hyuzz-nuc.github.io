@@ -1220,26 +1220,27 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 /* ===================================
    移动端适配
    =================================== */
-@media (max-width: 768px) {
+/* ===================================
+   移动端适配优化
+   =================================== */
+
+/* 平板和手机（< 900px） */
+@media (max-width: 900px) {
+  /* 左右分栏变上下布局 */
   .home-layout {
-    padding: 0 15px;
+    grid-template-columns: 1fr;
     gap: 20px;
+    padding: 0 15px;
   }
   
-  .page-header h1 {
-    font-size: 18px;
+  /* 侧边栏隐藏或移到文章列表下方 */
+  .sidebar-right {
+    display: none;
   }
   
-  .post-entry {
-    padding: 18px;
-  }
-  
-  .post-entry h2 {
-    font-size: 16px;
-  }
-  
+  /* 导航栏菜单优化 */
   #menu {
-    gap: 10px;
+    gap: 8px;
   }
   
   #menu li a {
@@ -1247,17 +1248,238 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
     padding: 5px 8px;
   }
   
-  .widget {
+  /* 隐藏导航栏社交链接，节省空间 */
+  .header-social-links {
+    display: none;
+  }
+  
+  /* 页面标题缩小 */
+  .page-header h1 {
+    font-size: 18px;
+  }
+  
+  /* 文章卡片优化 */
+  .post-entry {
     padding: 15px;
   }
   
+  .post-entry h2 {
+    font-size: 16px;
+  }
+  
+  /* 小组件内边距减小 */
+  .widget {
+    padding: 12px;
+  }
+  
+  /* 回到顶部按钮位置调整 */
   .top-link {
     bottom: 20px !important;
     right: 20px !important;
   }
   
-  .header-social-links {
-    margin-left: 10px;
+  /* 阅读进度条在移动端保持 */
+  .reading-progress-bar {
+    height: 2px;
+  }
+}
+
+/* 手机（< 768px） */
+@media (max-width: 768px) {
+  /* 全局内边距减小 */
+  .main {
+    padding: 0 10px !important;
+  }
+  
+  /* 导航栏优化 */
+  .logo a {
+    font-size: 18px;
+  }
+  
+  /* 文章卡片 */
+  .post-entry {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .post-entry h2 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  
+  .entry-content {
+    font-size: 14px;
+  }
+  
+  .post-meta {
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+  
+  /* 分页按钮优化 */
+  .pagination {
+    gap: 10px;
+  }
+  
+  .pagination a {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  /* 文章详情页 */
+  .post-single {
+    padding: 20px 15px;
+    margin: 20px auto;
+  }
+  
+  .post-title {
+    font-size: 24px;
+  }
+  
+  .post-content {
+    font-size: 15px;
+  }
+  
+  .post-content h1 {
+    font-size: 22px;
+  }
+  
+  .post-content h2 {
+    font-size: 20px;
+  }
+  
+  .post-content h3 {
+    font-size: 18px;
+  }
+  
+  /* 代码块横向滚动 */
+  .post-content pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* 图片自适应 */
+  .post-content img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* 小组件优化 */
+  .widget {
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .widget-title {
+    font-size: 14px;
+  }
+  
+  /* 搜索框优化 */
+  .search-input {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+  
+  .search-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  /* 最近文章列表 */
+  .recent-posts-list li {
+    padding: 8px;
+  }
+  
+  .recent-posts-list a {
+    font-size: 13px;
+  }
+  
+  .recent-posts-date {
+    font-size: 11px;
+  }
+  
+  /* 归档列表 */
+  .archive-list {
+    gap: 6px;
+  }
+  
+  .archive-list a {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  
+  /* 随机文章按钮 */
+  .random-post-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+  
+  /* 页脚优化 */
+  .footer {
+    font-size: 12px;
+    padding: 15px;
+  }
+  
+  /* 动漫人物装饰在移动端隐藏 */
+  .page-decoration {
+    display: none;
+  }
+}
+
+/* 小屏手机（< 480px） */
+@media (max-width: 480px) {
+  /* 导航栏 */
+  .logo a {
+    font-size: 16px;
+  }
+  
+  #menu li a {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+  
+  /* 文章卡片 */
+  .post-entry {
+    padding: 10px;
+  }
+  
+  .post-entry h2 {
+    font-size: 14px;
+  }
+  
+  .entry-content {
+    font-size: 13px;
+  }
+  
+  /* 文章详情页 */
+  .post-single {
+    padding: 15px 10px;
+  }
+  
+  .post-title {
+    font-size: 20px;
+  }
+  
+  .post-content {
+    font-size: 14px;
+  }
+  
+  /* 点赞按钮 */
+  .like-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .like-count {
+    font-size: 12px;
+  }
+  
+  /* Toast 提示优化 */
+  #toast-message {
+    padding: 15px 20px;
+    font-size: 13px;
+    max-width: 80%;
   }
 }
 
