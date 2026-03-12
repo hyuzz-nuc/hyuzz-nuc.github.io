@@ -129,3 +129,201 @@ button:active, .btn:active, .button:active {
   transform: translate(2px, 2px) !important;
   box-shadow: 1px 1px 0px rgba(92, 64, 51, 0.3) !important;
 }
+
+/* --- 导航栏复古样式 --- */
+.header, nav {
+  background: #fff8e7 !important;
+  border-bottom: 3px solid #5c4033 !important;
+}
+
+.nav-links a {
+  font-family: 'Press Start 2P', 'Courier New', monospace !important;
+  font-size: 12px !important;
+  color: #5c4033 !important;
+  padding: 8px 12px !important;
+  border: 2px solid transparent !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-links a:hover {
+  background: #f0e6d2 !important;
+  border-color: #c41e3a !important;
+  color: #c41e3a !important;
+}
+
+/* --- 标题复古样式 --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Press Start 2P', 'Courier New', monospace !important;
+  color: #5c4033 !important;
+  text-shadow: 2px 2px 0px rgba(196, 30, 58, 0.2) !important;
+  line-height: 1.6 !important;
+}
+
+h1 { font-size: 24px !important; }
+h2 { font-size: 20px !important; }
+h3 { font-size: 16px !important; }
+
+/* --- 链接样式 --- */
+a {
+  color: #c41e3a !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+a:hover {
+  color: #8b0000 !important;
+  text-decoration: underline !important;
+}
+
+/* --- 回到顶部按钮 --- */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #c41e3a;
+  border: 3px solid #5c4033 !important;
+  border-radius: 4px !important;
+  box-shadow: 3px 3px 0px rgba(92, 64, 51, 0.4);
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+  transition: all 0.2s ease;
+}
+
+.back-to-top:hover {
+  background: #a01830;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px rgba(92, 64, 51, 0.4);
+}
+
+.back-to-top:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px rgba(92, 64, 51, 0.4);
+}
+
+.back-to-top-arrow {
+  color: white;
+  font-size: 24px;
+  line-height: 44px;
+  text-align: center;
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+/* --- 阅读进度条 --- */
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 8px;
+  background: linear-gradient(90deg, #c41e3a, #ff6b6b);
+  border-bottom: 2px solid #5c4033;
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* --- 文章目录复古样式 --- */
+.toc {
+  background: #fff8e7 !important;
+  border: 3px solid #5c4033 !important;
+  border-radius: 8px !important;
+  padding: 15px !important;
+  margin: 20px 0 !important;
+}
+
+.toc-title {
+  font-family: 'Press Start 2P', 'Courier New', monospace !important;
+  font-size: 14px !important;
+  color: #c41e3a !important;
+  margin-bottom: 10px !important;
+}
+
+.toc ul {
+  list-style: none !important;
+  padding-left: 10px !important;
+}
+
+.toc li {
+  margin: 8px 0 !important;
+  border-left: 2px solid #d4c4a8 !important;
+  padding-left: 10px !important;
+}
+
+.toc a {
+  font-size: 13px !important;
+  color: #5c4033 !important;
+}
+
+.toc a:hover {
+  color: #c41e3a !important;
+  border-left-color: #c41e3a !important;
+}
+
+/* --- 页脚复古样式 --- */
+footer {
+  background: #f0e6d2 !important;
+  border-top: 3px solid #5c4033 !important;
+  padding: 20px !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+/* --- 代码块复古边框 --- */
+pre, code {
+  border: 2px solid #5c4033 !important;
+  border-radius: 4px !important;
+  background: #1e1e1e !important;
+}
+
+/* --- 标签和分类 --- */
+.post-tags, .post-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.post-tag, .post-category {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #f0e6d2;
+  border: 2px solid #5c4033;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  color: #5c4033;
+  transition: all 0.2s ease;
+}
+
+.post-tag:hover, .post-category:hover {
+  background: #c41e3a;
+  color: white;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0px rgba(92, 64, 51, 0.3);
+}
+
+/* --- 移动端适配 --- */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .back-to-top-arrow {
+    line-height: 39px;
+  }
+  
+  h1 { font-size: 20px !important; }
+  h2 { font-size: 16px !important; }
+  h3 { font-size: 14px !important; }
+  
+  .recent-posts-widget {
+    padding: 15px;
+  }
+}
