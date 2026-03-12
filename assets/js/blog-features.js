@@ -93,7 +93,7 @@ async function goToRandomPost() {
     const posts = data.filter(item => item.permalink && !item.permalink.endsWith('/'));
     
     if (posts.length === 0) {
-      alert('暂无文章');
+      showToast('暂无文章');
       return;
     }
     
@@ -105,8 +105,39 @@ async function goToRandomPost() {
     window.location.href = randomPost.permalink;
   } catch (error) {
     console.error('获取文章列表失败:', error);
-    alert('随机文章功能暂时不可用');
+    showToast('随机文章功能暂时不可用');
   }
+}
+
+/**
+ * 显示提示消息（替代 alert）
+ */
+function showToast(message) {
+  // 检查是否已存在 toast
+  let toast = document.getElementById('toast-message');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast-message';
+    toast.style.position = 'fixed';
+    toast.style.top = '50%';
+    toast.style.left = '50%';
+    toast.style.transform = 'translate(-50%, -50%)';
+    toast.style.background = 'rgba(0, 0, 0, 0.85)';
+    toast.style.color = '#fff';
+    toast.style.padding = '20px 40px';
+    toast.style.borderRadius = '8px';
+    toast.style.fontSize = '14px';
+    toast.style.zIndex = '99999';
+    toast.style.textAlign = 'center';
+    document.body.appendChild(toast);
+  }
+  
+  toast.textContent = message;
+  toast.style.display = 'block';
+  
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 2000);
 }
 
 /**

@@ -1343,6 +1343,18 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   transform: translateY(0);
 }
 
+/* 深色模式随机文章按钮 */
+[data-theme="dark"] .random-post-btn {
+  background: #3a3a3a !important;
+  color: #d0d0d0 !important;
+  border-color: #4a4a4a !important;
+}
+
+[data-theme="dark"] .random-post-btn:hover {
+  background: #4a4a4a !important;
+  border-color: var(--primary-gold) !important;
+}
+
 /* --- 文章点赞 --- */
 .like-container {
   display: flex;
