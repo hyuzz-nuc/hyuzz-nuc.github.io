@@ -50,7 +50,7 @@ body {
 .home-layout {
   display: grid;
   grid-template-columns: 1fr 300px;
-  gap: 50px;
+  gap: 60px;
   max-width: 1200px;
   margin: 30px auto;
   padding: 0 20px;
@@ -62,7 +62,7 @@ body {
 .home-layout::before {
   content: '';
   position: absolute;
-  left: calc(100% - 300px - 25px);
+  left: calc(100% - 300px - 30px);
   top: 0;
   bottom: 0;
   width: 2px;
