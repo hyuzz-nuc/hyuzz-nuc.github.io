@@ -115,7 +115,7 @@ body {
 }
 
 /* ===================================
-   覆盖 PaperMod 主容器宽度限制
+   覆盖 PaperMod 主容器宽度限制 + 背景色
    =================================== */
 .main {
   max-width: 100% !important;
@@ -127,6 +127,15 @@ body {
   max-width: 100% !important;
   padding: 0 !important;
   background: transparent !important;
+}
+
+/* 文章列表页背景色 - 覆盖 PaperMod 默认白色 */
+.list {
+  background: #f5f0e6 !important;
+}
+
+[data-theme="dark"] .list {
+  background: var(--bg-body) !important;
 }
 
 /* ===================================
