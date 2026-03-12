@@ -138,6 +138,15 @@ body {
   background: var(--bg-body) !important;
 }
 
+/* 归档页面背景色 */
+.archive-content {
+  background: #f5f0e6 !important;
+}
+
+[data-theme="dark"] .archive-content {
+  background: var(--bg-body) !important;
+}
+
 /* ===================================
    首页左右分栏布局 - 带分割线
    =================================== */
@@ -823,7 +832,7 @@ body {
    导航栏样式
    =================================== */
 .header {
-  background: #f5f0e6;
+  background: #ebe5d8 !important;
   border-bottom: 2px solid var(--border-gold);
   padding: 12px 0;
   box-shadow: 0 2px 8px rgba(184, 134, 11, 0.1);
