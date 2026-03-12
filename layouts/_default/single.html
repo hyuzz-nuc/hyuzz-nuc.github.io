@@ -15,6 +15,8 @@
         {{- if not (.Param "hideMeta") }}
         <div class="post-meta">
           {{- partial "post_meta.html" . -}}
+          <span style="margin-left: 10px;">📝 {{ .WordCount }} 字</span>
+          <span style="margin-left: 10px;">👁️ <span id="busuanzi_value_page_pv">-</span> 次阅读</span>
         </div>
         {{- end }}
       </header>
@@ -61,6 +63,9 @@
   <!-- 右侧边栏 -->
   {{- partial "sidebar-right.html" . }}
 </div>
+
+<!-- 不蒜子页面统计脚本 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!-- 微信二维码弹窗 -->
 <div id="wechat-modal" class="modal" onclick="hideWechatQR()">

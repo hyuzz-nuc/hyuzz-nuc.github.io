@@ -24,6 +24,7 @@
                 <li>
                   <span class="archive-post-date">{{ .Date.Format "01/02" }}</span>
                   <a href="{{ .Permalink }}" class="archive-post-title">{{ .Title }}</a>
+                  <span class="archive-post-meta">({{ .WordCount }}字)</span>
                 </li>
                 {{- end }}
               </ul>

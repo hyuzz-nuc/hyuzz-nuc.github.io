@@ -7,7 +7,7 @@
       <li>
         <span class="stat-icon">📄</span>
         <span class="stat-label">文章数量：</span>
-        <span class="stat-value">{{ len .Site.RegularPages }}</span>
+        <span class="stat-value">{{ len (where .Site.RegularPages "Type" "posts") }}</span>
       </li>
       <li>
         <span class="stat-icon">👁️</span>
