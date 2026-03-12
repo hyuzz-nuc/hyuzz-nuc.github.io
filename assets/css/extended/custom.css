@@ -477,20 +477,28 @@ body {
   border: 1px solid var(--border-gold);
   border-radius: 4px;
   font-size: 13px;
-  background: #f5f0e6 !important;
+  background: #f5f0e6;
   color: var(--text-dark);
 }
 
 /* 深色模式搜索输入框 */
 [data-theme="dark"] .search-input {
-  background: #1a1a1a !important;
-  color: var(--text-primary) !important;
-  border-color: var(--border-primary) !important;
+  background: #2a2a2a !important;
+  color: #d0d0d0 !important;
+  border-color: #3a3a3a !important;
+}
+
+/* 深色模式搜索按钮 */
+[data-theme="dark"] .search-btn {
+  background: #3a3a3a !important;
+  color: #d0d0d0 !important;
+  border-color: #4a4a4a !important;
 }
 
 /* 深色模式搜索框容器 */
-[data-theme="dark"] .widget:has(.search-box) {
-  background: #141414 !important;
+[data-theme="dark"] .widget:has(.search-box),
+[data-theme="dark"] .widget:has(.search-btn) {
+  background: #1a1a1a !important;
 }
 
 .search-input:focus {
@@ -837,7 +845,7 @@ body {
    导航栏样式
    =================================== */
 .header {
-  background: #ebe5d8 !important;
+  background: #ebe5d8;
   border-bottom: 2px solid var(--border-gold);
   padding: 12px 0;
   box-shadow: 0 2px 8px rgba(184, 134, 11, 0.1);
@@ -845,7 +853,7 @@ body {
 
 /* 深色模式导航栏 */
 [data-theme="dark"] .header {
-  background: var(--bg-widget);
+  background: #1a1a1a !important;
   border-bottom-color: var(--border-primary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
