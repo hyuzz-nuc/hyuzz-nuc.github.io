@@ -1954,21 +1954,51 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 /* ===================================
-   文章目录（TOC）
+   文章目录（TOC) - 可折叠
    =================================== */
 .post-toc {
-  margin-top: 40px;
-  padding: 20px;
+  margin-bottom: 30px;
+  padding: 15px 20px;
   background: var(--bg-light);
   border: 2px solid var(--border-gold);
   border-radius: 8px;
 }
 
+.post-toc .toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
 .post-toc h4 {
   color: var(--primary-gold);
-  margin-bottom: 15px;
+  margin: 0;
   font-size: 16px;
   font-weight: 600;
+}
+
+.post-toc #toc-toggle-icon {
+  font-size: 18px;
+  color: var(--primary-gold);
+  transition: transform 0.3s ease;
+}
+
+.post-toc #toc-content {
+  margin-top: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  opacity: 1;
+  padding-bottom: 5px;
+}
+
+.post-toc #toc-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  overflow: hidden;
 }
 
 .post-toc ul {

@@ -21,19 +21,22 @@
         {{- end }}
       </header>
       
-      {{- if .Content }}
-      <div class="post-content">
-        {{ .Content }}
+      <!-- 文章目录（可折叠） -->
+      {{- if .TableOfContents }}
+      <div class="post-toc" style="margin-bottom: 30px; padding: 15px 20px; background: var(--bg-light); border: 2px solid var(--border-gold); border-radius: 8px;">
+        <div class="toc-header" onclick="toggleToc()" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+          <h4 style="color: var(--primary-gold); margin: 0; font-size: 16px; font-weight: 600;">📑 文章目录</h4>
+          <span id="toc-toggle-icon" style="font-size: 18px; color: var(--primary-gold); transition: transform 0.3s ease;">▼</span>
+        </div>
+        <div id="toc-content" style="margin-top: 10px; max-height: 500px; overflow-y: auto; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 1;">
+          {{ .TableOfContents }}
+        </div>
       </div>
       {{- end }}
 
-      <!-- 文章目录 -->
-      {{- if .TableOfContents }}
-      <div class="post-toc" style="margin-top: 40px; padding: 20px; background: var(--bg-light); border: 2px solid var(--border-gold); border-radius: 8px;">
-        <h4 style="color: var(--primary-gold); margin-bottom: 15px; font-size: 16px;">📑 文章目录</h4>
-        <div class="toc-content">
-          {{ .TableOfContents }}
-        </div>
+      {{- if .Content }}
+      <div class="post-content">
+        {{ .Content }}
       </div>
       {{- end }}
 
@@ -94,6 +97,24 @@
 
   function hideWechatQR() {
     document.getElementById('wechat-modal').style.display = 'none';
+  }
+
+  // 目录折叠功能
+  function toggleToc() {
+    const tocContent = document.getElementById('toc-content');
+    const toggleIcon = document.getElementById('toc-toggle-icon');
+    
+    if (tocContent.style.maxHeight === '0px' || tocContent.style.maxHeight === '0') {
+      // 展开
+      tocContent.style.maxHeight = '500px';
+      tocContent.style.opacity = '1';
+      toggleIcon.style.transform = 'rotate(0deg)';
+    } else {
+      // 折叠
+      tocContent.style.maxHeight = '0px';
+      tocContent.style.opacity = '0';
+      toggleIcon.style.transform = 'rotate(-90deg)';
+    }
   }
 </script>
 
