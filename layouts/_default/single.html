@@ -27,6 +27,16 @@
       </div>
       {{- end }}
 
+      <!-- 文章目录 -->
+      {{- if .TableOfContents }}
+      <div class="post-toc" style="margin-top: 40px; padding: 20px; background: var(--bg-light); border: 2px solid var(--border-gold); border-radius: 8px;">
+        <h4 style="color: var(--primary-gold); margin-bottom: 15px; font-size: 16px;">📑 文章目录</h4>
+        <div class="toc-content">
+          {{ .TableOfContents }}
+        </div>
+      </div>
+      {{- end }}
+
       <footer class="post-footer">
         {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
         {{- if .GetTerms $tags }}

@@ -1952,3 +1952,83 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 [data-theme="dark"] .like-count {
   color: var(--text-secondary);
 }
+
+/* ===================================
+   文章目录（TOC）
+   =================================== */
+.post-toc {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--bg-light);
+  border: 2px solid var(--border-gold);
+  border-radius: 8px;
+}
+
+.post-toc h4 {
+  color: var(--primary-gold);
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.post-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-toc li {
+  margin-bottom: 8px;
+  padding-left: 15px;
+  border-left: 2px solid var(--border-light);
+  transition: border-left-color 0.2s ease;
+}
+
+.post-toc li:hover {
+  border-left-color: var(--primary-gold);
+}
+
+.post-toc a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.6;
+  display: block;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.post-toc a:hover {
+  color: var(--primary-gold);
+}
+
+.post-toc ul ul {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.post-toc ul ul li {
+  border-left-color: var(--border-light);
+}
+
+.post-toc ul ul ul {
+  margin-left: 15px;
+}
+
+/* 深色模式目录 */
+[data-theme="dark"] .post-toc {
+  background: var(--bg-widget);
+  border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .post-toc li {
+  border-left-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .post-toc a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .post-toc a:hover {
+  color: var(--primary-gold);
+}
