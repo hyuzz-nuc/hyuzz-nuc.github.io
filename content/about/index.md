@@ -26,7 +26,7 @@ description: "专注技术分享，记录成长点滴"
 - **后端：** Java、Python、各种中间件
 - **前端：** Vue
 - **工具：** 那可太多了，样样通样样松✅
-
+- **人工智能**
 ### 📬 联系方式
 
 - **GitHub:** [@hyuzz-nuc](https://github.com/hyuzz-nuc)
