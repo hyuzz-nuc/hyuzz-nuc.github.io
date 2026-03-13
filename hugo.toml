@@ -4,6 +4,7 @@ languageCode = "zh-CN"
 title = "星核技术社"
 theme = "PaperMod"
 defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
 enableInlineShortcodes = true
 enableRobotsTXT = true
 buildDrafts = false

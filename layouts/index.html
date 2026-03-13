@@ -13,15 +13,12 @@
     {{- if gt $posts.TotalPages 0 }}
     <div class="article-list">
       {{- range $posts.Pages }}
-      <article class="post-entry">
+      <article class="post-entry" onclick="window.location.href='{{ .Permalink }}'" style="cursor: pointer;">
         <header class="entry-header">
           <h2>
             <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h2>
         </header>
-        <div class="entry-content">
-          <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-        </div>
         <footer class="entry-footer">
           <span class="post-meta">
             📅 {{ .Date.Format "2006-01-02" }}
