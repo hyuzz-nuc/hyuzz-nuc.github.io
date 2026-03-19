@@ -20,7 +20,11 @@
           </h2>
         </header>
         <div class="entry-content">
+          {{- if .Description }}
+          <p class="post-description-small">{{ .Description }}</p>
+          {{- else }}
           <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+          {{- end }}
         </div>
         <footer class="entry-footer">
           <span class="post-meta">
