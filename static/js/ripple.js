@@ -1,6 +1,6 @@
 /**
- * 点击光晕扩散特效
- * 点击任意位置产生渐变光环向外扩散
+ * 点击星光闪烁特效
+ * 点击任意位置产生闪烁的小星星四散
  */
 (function() {
   // 创建 canvas
@@ -19,7 +19,7 @@
   
   document.body.appendChild(canvas);
   
-  let ripples = [];
+  let stars = [];
   
   // 调整画布大小
   function resize() {
@@ -30,19 +30,22 @@
   resize();
   window.addEventListener('resize', resize);
   
-  // 点击创建光晕
+  // 点击创建星星
   document.addEventListener('click', function(e) {
-    // 创建 3 层光晕，更有层次感
-    for (let i = 0; i < 3; i++) {
-      ripples.push({
+    // 创建 12 颗小星星
+    for (let i = 0; i < 12; i++) {
+      const angle = (Math.PI * 2 * i) / 12;
+      const speed = 2 + Math.random() * 3;
+      stars.push({
         x: e.clientX,
         y: e.clientY,
-        radius: 0,
-        opacity: 0.8,
-        speed: 3 + i * 2,
-        color: i === 0 ? 'rgba(255, 255, 255,' : 
-               i === 1 ? 'rgba(186, 85, 211,' : 
-                         'rgba(138, 43, 226,'
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        size: 2 + Math.random() * 3,
+        color: ['#ffd700', '#fffacd', '#ffe4b5', '#f0e68c', '#ffffff'][Math.floor(Math.random() * 5)],
+        opacity: 1,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.2
       });
     }
   });
@@ -51,31 +54,46 @@
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    for (let i = ripples.length - 1; i >= 0; i--) {
-      const ripple = ripples[i];
+    for (let i = stars.length - 1; i >= 0; i--) {
+      const star = stars[i];
       
-      // 创建渐变光晕
-      const gradient = ctx.createRadialGradient(
-        ripple.x, ripple.y, 0,
-        ripple.x, ripple.y, ripple.radius
-      );
+      ctx.save();
+      ctx.translate(star.x, star.y);
+      ctx.rotate(star.rotation);
       
-      gradient.addColorStop(0, ripple.color + '0)');
-      gradient.addColorStop(0.4, ripple.color + (ripple.opacity * 0.5) + ')');
-      gradient.addColorStop(1, ripple.color + '0)');
-      
+      // 绘制四角星
       ctx.beginPath();
-      ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
-      ctx.fillStyle = gradient;
+      for (let j = 0; j < 4; j++) {
+        const angle = (Math.PI * 2 * j) / 4;
+        const outerRadius = star.size;
+        const innerRadius = star.size / 2;
+        
+        ctx.lineTo(Math.cos(angle) * outerRadius, Math.sin(angle) * outerRadius);
+        ctx.lineTo(Math.cos(angle + Math.PI / 4) * innerRadius, Math.sin(angle + Math.PI / 4) * innerRadius);
+      }
+      ctx.closePath();
+      
+      ctx.fillStyle = star.color;
+      ctx.globalAlpha = star.opacity;
       ctx.fill();
       
-      // 扩大光晕
-      ripple.radius += ripple.speed;
-      ripple.opacity -= 0.015;
+      // 添加发光效果
+      ctx.shadowColor = star.color;
+      ctx.shadowBlur = 10;
+      ctx.fill();
       
-      // 移除消失的光晕
-      if (ripple.opacity <= 0) {
-        ripples.splice(i, 1);
+      ctx.restore();
+      
+      // 更新位置
+      star.x += star.vx;
+      star.y += star.vy;
+      star.vy += 0.1; // 重力
+      star.rotation += star.rotationSpeed;
+      star.opacity -= 0.02;
+      
+      // 移除消失的星星
+      if (star.opacity <= 0) {
+        stars.splice(i, 1);
       }
     }
     
