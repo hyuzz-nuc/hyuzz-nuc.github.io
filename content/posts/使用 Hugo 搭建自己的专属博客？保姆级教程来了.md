@@ -21,15 +21,15 @@ description: "保姆级搭建博客，手把手教会你！"
 
 选择对应的版本进行下载
 
-![](static/Hn8Jb12dDogUPrxtEJMcMa5snjf.png)
+![](/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/Hn8Jb12dDogUPrxtEJMcMa5snjf.png)
 
 首先我们配置环境变量，复制你解压缩后的文件路径，搜索键入 env 进入系统环境的配置，在系统环境的 Path 路径下进入，这里以 E:\hugo 为例
 
-![](static/BBkhb65QyoPESYxCFHJcDk95nEY.png)
+![](/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/BBkhb65QyoPESYxCFHJcDk95nEY.png)
 
 命令行输入 hugo version，出现如下界面则配置成功
 
-![](static/P8BqbMBuDo2FgaxWQmXcrAh8nNb.png)
+![](/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/P8BqbMBuDo2FgaxWQmXcrAh8nNb.png)
 
 接下来输入 hugo new site 你的站点名称 ，之后 cd 你的站点名称进入文件夹，hugo server 启动站点，默认是 localhost:1313，到这一步你的 hugo 基础配置已经搭建完毕！
 
@@ -37,11 +37,11 @@ description: "保姆级搭建博客，手把手教会你！"
 
 按照你喜欢的主题去 GitHub 下载资源包，将资源包解压到 themes 文件夹中，修改 hugo.toml 中 theme 的配置即可，是不是很简单？
 
-![](static/Dhw4bpEXPohxV8xPgf2cXJ5YnRh.png)
+![](/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/Dhw4bpEXPohxV8xPgf2cXJ5YnRh.png)
 
 输入 hugo server,出现以下样式，说明配置已生效！
 
-![](static/MW8kbCr9hokiSpxTGj6cMeLdnNf.png)
+![](/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/MW8kbCr9hokiSpxTGj6cMeLdnNf.png)
 
 > ## 项目结构
 
@@ -59,13 +59,13 @@ E:\hugo\my-blog/
 
 使用命令 hugo new content posts/你的文章名称
 
-![](static/NSvKbP0oxo6xgsxEA5NcdhITnFf.png)
+![](/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/NSvKbP0oxo6xgsxEA5NcdhITnFf.png)
 
 Hugo 提供了 archetypes 功能，可以初始化一些模板，你也可以通过 Hugo 使用手册来看一下个性化定制参数，比如描述、标签、分类等等
 
 [Hugo 快速入门中文站](https://gohugo.com.cn/getting-started/quick-start/)
 
-![](static/DIXxb9B6GoGPnixKBY8cELgJnA1.png)
+![](/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/DIXxb9B6GoGPnixKBY8cELgJnA1.png)
 
 之后编写完你的 md 文档，使用 hugo 命令即可上传你的文章！
 
