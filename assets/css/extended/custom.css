@@ -2062,3 +2062,18 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 [data-theme="dark"] .post-toc a:hover {
   color: var(--primary-gold);
 }
+
+/* ===================================
+   文章列表描述 - 小字样式
+   =================================== */
+.post-description-small {
+  font-size: 0.9rem;
+  color: var(--text-gray);
+  margin: 0.5rem 0 0 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+[data-theme="dark"] .post-description-small {
+  color: var(--text-secondary);
+}
