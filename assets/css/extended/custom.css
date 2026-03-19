@@ -2047,20 +2047,29 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 
 /* 深色模式目录 */
 [data-theme="dark"] .post-toc {
-  background: var(--bg-widget);
-  border-color: var(--border-primary);
+  background: var(--bg-widget) !important;
+  border-color: var(--border-primary) !important;
+}
+
+[data-theme="dark"] .post-toc h4,
+[data-theme="dark"] .post-toc #toc-toggle-icon {
+  color: var(--primary-gold) !important;
 }
 
 [data-theme="dark"] .post-toc li {
-  border-left-color: var(--border-secondary);
+  border-left-color: var(--border-secondary) !important;
 }
 
 [data-theme="dark"] .post-toc a {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 [data-theme="dark"] .post-toc a:hover {
-  color: var(--primary-gold);
+  color: var(--primary-gold) !important;
+}
+
+[data-theme="dark"] .post-toc #toc-content {
+  background: transparent !important;
 }
 
 /* ===================================
