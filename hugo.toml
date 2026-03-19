@@ -51,6 +51,7 @@ paginate = 10
   theme = "auto"
   # 自定义 CSS/JS
   customCSS = ["css/extended/custom.css"]
+  customJS = ["js/sakura.js"]
   # 网站图标
   assets.favicon = "/images/favicon.png"
   assets.favicon16x16 = "/images/favicon.png"
