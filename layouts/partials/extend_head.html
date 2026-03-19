@@ -1,4 +1,9 @@
-{{- /* 樱花点击特效 */ -}}
+{{- /* 点击水波纹特效 */ -}}
+{{- if not .Params.disableRipple }}
+<script src="{{ "js/ripple.js" | absURL }}"></script>
+{{- end }}
+
+{{- /* 全屏樱花飘落背景 */ -}}
 {{- if not .Params.disableSakura }}
 <script src="{{ "js/sakura.js" | absURL }}"></script>
 {{- end }}

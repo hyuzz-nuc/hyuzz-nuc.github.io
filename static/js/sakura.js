@@ -1,86 +1,130 @@
 /**
- * Sakura 樱花点击特效
- * 基于 cursor-effects 简化版
+ * 樱花飘落特效
+ * 基于 Canvas 实现，轻量高性能
+ * 全屏自动飘落背景效果
  */
-class SakuraEffect {
-  constructor() {
-    this.canvas = document.createElement('canvas');
-    this.ctx = this.canvas.getContext('2d');
-    this.particles = [];
-    this.init();
+(function() {
+  // 配置项
+  const config = {
+    particleCount: 30,        // 花瓣数量
+    particleSize: [8, 15],    // 花瓣大小范围
+    fallSpeed: [1, 3],        // 飘落速度
+    swaySpeed: 0.02,          // 摇摆速度
+    swayAmplitude: 30,        // 摇摆幅度
+    colors: ['#ffb7c5', '#ffc0cb', '#ffd1dc', '#ffe4e1'] // 樱花粉色系
+  };
+
+  // 创建 Canvas
+  const canvas = document.createElement('canvas');
+  canvas.id = 'sakura-canvas';
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;';
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  let particles = [];
+
+  // 调整 Canvas 尺寸
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
   }
 
-  init() {
-    this.canvas.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-    `;
-    document.body.appendChild(this.canvas);
-    this.resize();
-    window.addEventListener('resize', () => this.resize());
-    document.addEventListener('click', (e) => this.createSakura(e.clientX, e.clientY));
-    this.animate();
-  }
-
-  resize() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-  }
-
-  createSakura(x, y) {
-    for (let i = 0; i < 8; i++) {
-      this.particles.push({
-        x: x,
-        y: y,
-        vx: (Math.random() - 0.5) * 4,
-        vy: (Math.random() - 0.5) * 4,
-        size: Math.random() * 8 + 4,
-        color: `hsl(${330 + Math.random() * 30}, 70%, ${70 + Math.random() * 20}%)`,
-        rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 10,
-        life: 1
-      });
+  // 花瓣类
+  class Particle {
+    constructor() {
+      this.reset();
     }
-  }
 
-  animate() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
-    for (let i = this.particles.length - 1; i >= 0; i--) {
-      const p = this.particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.1; // gravity
-      p.rotation += p.rotationSpeed;
-      p.life -= 0.015;
+    reset() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * -height;
+      this.size = config.particleSize[0] + Math.random() * (config.particleSize[1] - config.particleSize[0]);
+      this.speedY = config.fallSpeed[0] + Math.random() * (config.fallSpeed[1] - config.fallSpeed[0]);
+      this.speedX = Math.random() * 2 - 1;
+      this.swayPhase = Math.random() * Math.PI * 2;
+      this.color = config.colors[Math.floor(Math.random() * config.colors.length)];
+      this.rotation = Math.random() * Math.PI * 2;
+      this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+    }
 
-      if (p.life <= 0) {
-        this.particles.splice(i, 1);
-        continue;
+    update() {
+      this.y += this.speedY;
+      this.x += Math.sin(this.swayPhase) * config.swaySpeed * config.swayAmplitude;
+      this.swayPhase += config.swaySpeed;
+      this.rotation += this.rotationSpeed;
+
+      // 超出边界重置
+      if (this.y > height + this.size) {
+        this.reset();
       }
-
-      this.ctx.save();
-      this.ctx.translate(p.x, p.y);
-      this.ctx.rotate((p.rotation * Math.PI) / 180);
-      this.ctx.globalAlpha = p.life;
-      this.ctx.fillStyle = p.color;
-      
-      // 绘制樱花花瓣（椭圆形）
-      this.ctx.beginPath();
-      this.ctx.ellipse(0, 0, p.size, p.size / 2, 0, 0, Math.PI * 2);
-      this.ctx.fill();
-      
-      this.ctx.restore();
+      if (this.x > width + this.size || this.x < -this.size) {
+        this.x = Math.random() * width;
+      }
     }
 
-    requestAnimationFrame(() => this.animate());
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      
+      // 绘制花瓣形状
+      ctx.beginPath();
+      ctx.moveTo(0, -this.size / 2);
+      ctx.bezierCurveTo(
+        this.size / 2, -this.size / 4,
+        this.size / 2, this.size / 4,
+        0, this.size / 2
+      );
+      ctx.bezierCurveTo(
+        -this.size / 2, this.size / 4,
+        -this.size / 2, -this.size / 4,
+        0, -this.size / 2
+      );
+      ctx.closePath();
+      
+      ctx.fillStyle = this.color;
+      ctx.globalAlpha = 0.7;
+      ctx.fill();
+      ctx.restore();
+    }
   }
-}
 
-// 自动初始化
-new SakuraEffect();
+  // 初始化花瓣
+  function init() {
+    resize();
+    particles = [];
+    for (let i = 0; i < config.particleCount; i++) {
+      const p = new Particle();
+      p.y = Math.random() * height; // 初始随机分布
+      particles.push(p);
+    }
+  }
+
+  // 动画循环
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  // 事件监听
+  window.addEventListener('resize', resize);
+
+  // 启动
+  init();
+  animate();
+
+  // 移动端/性能敏感设备自动禁用
+  if (window.innerWidth < 768 || navigator.hardwareConcurrency <= 2) {
+    canvas.style.display = 'none';
+  }
+})();
