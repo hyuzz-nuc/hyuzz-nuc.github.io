@@ -1,6 +1,6 @@
 /**
- * 点击水波纹特效
- * 点击任意位置产生扩散的圆形波纹
+ * 点击光晕扩散特效
+ * 点击任意位置产生渐变光环向外扩散
  */
 (function() {
   // 创建 canvas
@@ -19,7 +19,7 @@
   
   document.body.appendChild(canvas);
   
-  let waves = [];
+  let ripples = [];
   
   // 调整画布大小
   function resize() {
@@ -30,38 +30,52 @@
   resize();
   window.addEventListener('resize', resize);
   
-  // 点击创建波纹
+  // 点击创建光晕
   document.addEventListener('click', function(e) {
-    waves.push({
-      x: e.clientX,
-      y: e.clientY,
-      radius: 0,
-      opacity: 1,
-      color: `hsla(${Math.random() * 360}, 70%, 60%, 0.6)`
-    });
+    // 创建 3 层光晕，更有层次感
+    for (let i = 0; i < 3; i++) {
+      ripples.push({
+        x: e.clientX,
+        y: e.clientY,
+        radius: 0,
+        opacity: 0.8,
+        speed: 3 + i * 2,
+        color: i === 0 ? 'rgba(255, 255, 255,' : 
+               i === 1 ? 'rgba(186, 85, 211,' : 
+                         'rgba(138, 43, 226,'
+      });
+    }
   });
   
   // 动画循环
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    for (let i = waves.length - 1; i >= 0; i--) {
-      const wave = waves[i];
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const ripple = ripples[i];
+      
+      // 创建渐变光晕
+      const gradient = ctx.createRadialGradient(
+        ripple.x, ripple.y, 0,
+        ripple.x, ripple.y, ripple.radius
+      );
+      
+      gradient.addColorStop(0, ripple.color + '0)');
+      gradient.addColorStop(0.4, ripple.color + (ripple.opacity * 0.5) + ')');
+      gradient.addColorStop(1, ripple.color + '0)');
       
       ctx.beginPath();
-      ctx.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = wave.color;
-      ctx.lineWidth = 3;
-      ctx.globalAlpha = wave.opacity;
-      ctx.stroke();
+      ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
       
-      // 扩大波纹
-      wave.radius += 4;
-      wave.opacity -= 0.02;
+      // 扩大光晕
+      ripple.radius += ripple.speed;
+      ripple.opacity -= 0.015;
       
-      // 移除消失的波纹
-      if (wave.opacity <= 0) {
-        waves.splice(i, 1);
+      // 移除消失的光晕
+      if (ripple.opacity <= 0) {
+        ripples.splice(i, 1);
       }
     }
     
