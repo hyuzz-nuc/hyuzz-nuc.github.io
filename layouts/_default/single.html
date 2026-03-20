@@ -1,82 +1,85 @@
 {{- define "main" }}
-<article class="post-single">
-  <header class="post-header">
-    <div class="post-meta">
-      {{- if .Site.Params.ShowBreadCrumbs }}
-      <div class="breadcrumbs">
-        {{- partial "breadcrumbs.html" . }}
+
+<!-- 文章详情页布局 -->
+<div class="home-layout">
+  
+  <!-- 左侧文章内容 -->
+  <main class="main-content">
+    <article class="post-single">
+      <header class="post-header">
+        <div class="post-meta">
+          {{- if .Site.Params.ShowBreadCrumbs }}
+          <div class="breadcrumbs">
+            {{- partial "breadcrumbs.html" . }}
+          </div>
+          {{- end }}
+        </div>
+        <h1 class="post-title">
+          {{ .Title }}
+          {{- if .Draft }}&nbsp;<span class="draft-label">DRAFT</span>{{- end }}
+        </h1>
+        {{- if not (.Param "hideMeta") }}
+        <div class="post-meta">
+          {{- partial "post_meta.html" . }}
+        </div>
+        {{- end }}
+      </header>
+
+      {{- if .Params.cover.image }}
+      <div class="post-cover">
+        {{- partial "post_cover.html" . }}
       </div>
       {{- end }}
-    </div>
-    <h1 class="post-title">
-      {{ .Title }}
-      {{- if .Draft }}&nbsp;<span class="draft-label">DRAFT</span>{{- end }}
-    </h1>
-    {{- if not (.Param "hideMeta") }}
-    <div class="post-meta">
-      {{- partial "post_meta.html" . }}
-    </div>
-    {{- end }}
-  </header>
 
-  {{- if .Params.cover.image }}
-  <div class="post-cover">
-    {{- partial "post_cover.html" . }}
-  </div>
-  {{- end }}
-
-  {{- if .Params.ShowToc }}
-  <div class="post-toc">
-    {{- partial "toc.html" . }}
-  </div>
-  {{- end }}
-
-  <div class="post-content">
-    {{- if .Params.ShowFullText }}
-      {{ .Content }}
-    {{- else }}
-      {{ .Summary }}
-      {{- if .Truncated }}
-      <div class="read-more">
-        <a href="{{ .RelPermalink }}">阅读全文 »</a>
+      {{- if .Params.ShowToc }}
+      <div class="post-toc">
+        {{- partial "toc.html" . }}
       </div>
       {{- end }}
-    {{- end }}
-  </div>
 
-  <footer class="post-footer">
-    {{- if .Params.tags }}
-    <div class="post-tags">
-      {{- partial "post_tags.html" . }}
-    </div>
-    {{- end }}
+      <div class="post-content">
+        {{ .Content }}
+      </div>
 
-    {{- if (.Param "ShowPostNavLinks") }}
-    <div class="post-nav">
-      {{- partial "post_nav_links.html" . }}
-    </div>
-    {{- end }}
+      <footer class="post-footer">
+        {{- if .Params.tags }}
+        <div class="post-tags">
+          {{- partial "post_tags.html" . }}
+        </div>
+        {{- end }}
 
-    {{- if and (.Param "ShowReadingTime") (not .IsHome) }}
-    <div class="reading-time">
-      <span>📖 阅读时间：{{ .ReadingTime }} 分钟</span>
-    </div>
-    {{- end }}
+        {{- if (.Param "ShowPostNavLinks") }}
+        <div class="post-nav">
+          {{- partial "post_nav_links.html" . }}
+        </div>
+        {{- end }}
 
-    {{- if and (.Param "ShowWordCount") (not .IsHome) }}
-    <div class="word-count">
-      <span>📝 字数：{{ .WordCount }}</span>
-    </div>
-    {{- end }}
+        {{- if and (.Param "ShowReadingTime") (not .IsHome) }}
+        <div class="reading-time">
+          <span>📖 阅读时间：{{ .ReadingTime }} 分钟</span>
+        </div>
+        {{- end }}
 
-    {{- if and site.Params.comments.enabled (ne .Params.comments false) }}
-    <div class="comments">
-      {{- partial "comments.html" . }}
-    </div>
-    {{- end }}
+        {{- if and (.Param "ShowWordCount") (not .IsHome) }}
+        <div class="word-count">
+          <span>📝 字数：{{ .WordCount }}</span>
+        </div>
+        {{- end }}
 
-    {{/* 推荐阅读 */}}
-    {{- partial "related-posts.html" . }}
-  </footer>
-</article>
+        {{- if and site.Params.comments.enabled (ne .Params.comments false) }}
+        <div class="comments">
+          {{- partial "comments.html" . }}
+        </div>
+        {{- end }}
+
+        {{/* 推荐阅读 */}}
+        {{- partial "related-posts.html" . }}
+      </footer>
+    </article>
+  </main>
+
+  <!-- 右侧边栏 -->
+  {{- partial "sidebar-right.html" . }}
+</div>
+
 {{- end }}
