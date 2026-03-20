@@ -31,9 +31,16 @@
       </div>
       {{- end }}
 
-      {{- if .Params.ShowToc }}
+      <!-- 文章目录（可折叠） -->
+      {{- if .TableOfContents }}
       <div class="post-toc">
-        {{- partial "toc.html" . }}
+        <div class="toc-header" onclick="toggleToc()" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+          <h4 style="color: var(--primary-gold); margin: 0; font-size: 16px; font-weight: 600;">📑 文章目录</h4>
+          <span id="toc-toggle-icon" style="font-size: 18px; color: var(--primary-gold); transition: transform 0.3s ease;">▼</span>
+        </div>
+        <div id="toc-content" style="margin-top: 10px; max-height: 500px; overflow-y: auto; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 1;">
+          {{ .TableOfContents }}
+        </div>
       </div>
       {{- end }}
 
@@ -81,5 +88,25 @@
   <!-- 右侧边栏 -->
   {{- partial "sidebar-right.html" . }}
 </div>
+
+<script>
+  // 目录折叠功能
+  function toggleToc() {
+    const tocContent = document.getElementById('toc-content');
+    const toggleIcon = document.getElementById('toc-toggle-icon');
+    
+    if (tocContent.style.maxHeight === '0px' || tocContent.style.maxHeight === '0') {
+      // 展开
+      tocContent.style.maxHeight = '500px';
+      tocContent.style.opacity = '1';
+      toggleIcon.style.transform = 'rotate(0deg)';
+    } else {
+      // 折叠
+      tocContent.style.maxHeight = '0px';
+      tocContent.style.opacity = '0';
+      toggleIcon.style.transform = 'rotate(-90deg)';
+    }
+  }
+</script>
 
 {{- end }}
