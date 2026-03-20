@@ -6,6 +6,8 @@ description: "JHipster 微服务架构深度解析，包含服务发现、负载
 slug: "jhipster-microservices-complete-guide"
 tags: ["JHipster", "微服务", "Spring Boot"]
 categories: ["技术分享"]
+ShowToc: true
+TocOpen: true
 ---
 
 ## **一、JHipster 简介**
@@ -289,7 +291,7 @@ public User getUserFallback(Long id, Throwable ex) {
 </dependency>
 ```
 
-## 主文件：changelog-master.xml
+2. 主文件：changelog-master.xml
 
 路径：`resources/db/changelog/changelog-master.xml`
 
@@ -304,9 +306,8 @@ public User getUserFallback(Long id, Throwable ex) {
 </databaseChangeLog>
 ```
 
-## 建表变更文件：v1/create_user_table.xml
+ 3. 建表变更文件：v1/create_user_table.xml
 
-xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
