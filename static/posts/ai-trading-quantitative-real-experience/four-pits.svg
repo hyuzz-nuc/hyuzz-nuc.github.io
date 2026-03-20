@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect fill="#0f0f23" width="800" height="400"/>
+  
+  <!-- Title -->
+  <text x="40" y="30" fill="#ff4444" font-size="16" font-weight="bold">⚠️ 我踩过的四个大坑</text>
+  
+  <!-- Pit 1 -->
+  <rect x="20" y="50" width="370" height="160" fill="#1a1a2e" stroke="#ff4444" stroke-width="2" rx="5"/>
+  <text x="40" y="75" fill="#ff4444" font-size="14" font-weight="bold">❶ 过度拟合</text>
+  <text x="40" y="100" fill="#ccc" font-size="11">回测年化 50%，实盘直接亏惨</text>
+  <text x="40" y="120" fill="#888" font-size="10">参数太贴合历史数据</text>
+  <text x="40" y="140" fill="#888" font-size="10">换个时间段就废了</text>
+  <text x="40" y="170" fill="#00ff88" font-size="10">✅ 交叉验证 + 样本外测试</text>
+  <text x="40" y="190" fill="#00ff88" font-size="10">✅ 参数别调太细</text>
+  
+  <!-- Pit 2 -->
+  <rect x="410" y="50" width="370" height="160" fill="#1a1a2e" stroke="#ffaa00" stroke-width="2" rx="5"/>
+  <text x="430" y="75" fill="#ffaa00" font-size="14" font-weight="bold">❷ 忽略交易成本</text>
+  <text x="430" y="100" fill="#ccc" font-size="11">手续费吃掉 20% 利润</text>
+  <text x="430" y="120" fill="#888" font-size="10">回测没算滑点</text>
+  <text x="430" y="140" fill="#888" font-size="10">频繁交易手续费高</text>
+  <text x="430" y="170" fill="#00ff88" font-size="10">✅ 单次成本≤预期收益 10%</text>
+  <text x="430" y="190" fill="#00ff88" font-size="10">✅ 避免日内频繁交易</text>
+  
+  <!-- Pit 3 -->
+  <rect x="20" y="230" width="370" height="160" fill="#1a1a2e" stroke="#ff6600" stroke-width="2" rx="5"/>
+  <text x="40" y="255" fill="#ff6600" font-size="14" font-weight="bold">❸ 重仓押注</text>
+  <text x="40" y="280" fill="#ccc" font-size="11">重仓一只股票当天跌停</text>
+  <text x="40" y="300" fill="#888" font-size="10">心跳加速睡不着</text>
+  <text x="40" y="320" fill="#888" font-size="10">虽然涨回来了但后怕</text>
+  <text x="40" y="350" fill="#00ff88" font-size="10">✅ 单只≤10% 单行业≤30%</text>
+  <text x="40" y="370" fill="#00ff88" font-size="10">✅ 永远别满仓</text>
+  
+  <!-- Pit 4 -->
+  <rect x="410" y="230" width="370" height="160" fill="#1a1a2e" stroke="#aa44ff" stroke-width="2" rx="5"/>
+  <text x="430" y="255" fill="#aa44ff" font-size="14" font-weight="bold">❹ 追涨杀跌</text>
+  <text x="430" y="280" fill="#ccc" font-size="11">模型让买不敢买</text>
+  <text x="430" y="300" fill="#888" font-size="10">跌了舍不得割肉</text>
+  <text x="430" y="320" fill="#888" font-size="10">人性难克服</text>
+  <text x="430" y="350" fill="#00ff88" font-size="10">✅ 设自动交易让机器执行</text>
+  <text x="430" y="370" fill="#00ff88" font-size="10">✅ 眼不见心不烦</text>
+</svg>
