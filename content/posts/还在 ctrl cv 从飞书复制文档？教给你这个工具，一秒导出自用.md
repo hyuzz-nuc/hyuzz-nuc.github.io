@@ -4,6 +4,8 @@ date: 2026-03-07T14:00:00+08:00
 draft: false
 description: "好用的工具分享！"
 slug: "feishu-export-tool-guide"
+tags: ["飞书", "效率工具"]
+categories: ["工具推荐"]
 ---
 
 ## 导引

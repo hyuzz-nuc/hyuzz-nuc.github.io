@@ -4,6 +4,8 @@ date: 2026-03-08T14:00:00+08:00
 draft: false
 description: "快让我看看是谁还不会配置小龙虾！"
 slug: "openclaw-setup-guide"
+tags: ["OpenClaw", "AI", "效率工具"]
+categories: ["教程指南"]
 ---
 ## 一、前言
 

@@ -4,6 +4,8 @@ date: 2026-03-01T14:00:00+08:00
 draft: false
 description: "保姆级搭建博客，手把手教会你！"
 slug: "hugo-blog-setup-guide"
+tags: ["博客搭建", "教程指南"]
+categories: ["教程指南"]
 ---
 
 
