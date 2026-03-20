@@ -41,6 +41,33 @@
 /* ===================================
    全局背景 - 牛皮纸质感护眼（浅米色统一）
    =================================== */
+/* ===================================
+   字体配置 - 国内 CDN 加速
+   =================================== */
+@font-face {
+  font-family: 'LXGW WenKai';
+  src: url('https://cdn.jsdelivr.net/npm/lxgw-wenkai@1.1.0/dist/LXGWWenKai-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Han Sans CN';
+  src: url('https://cdn.jsdelivr.net/npm/source-han-sans-cn@1.0.0/dist/SourceHanSansCN-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   background-color: #f5f0e6;
   background-image: 
@@ -48,10 +75,10 @@ body {
     url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: cover;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'LXGW WenKai', '霞鹜文楷', 'Noto Sans SC', 'Source Han Sans CN', 'Microsoft YaHei', 'PingFang SC', sans-serif;
   font-size: 16px;
-  color: var(--text-dark);
-  line-height: 1.6;
+  color: #000000;
+  line-height: 1.8;
   position: relative;
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
@@ -228,10 +255,11 @@ body {
 }
 
 .page-header h1 {
+  font-family: 'Source Han Sans CN', '思源黑体', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  font-weight: bold;
   font-size: 22px;
   color: #000000;
   margin: 0;
-  font-weight: 600;
 }
 
 /* 移动端去掉装饰线 */
@@ -1036,14 +1064,36 @@ body {
    通用链接样式
    =================================== */
 a {
-  color: var(--primary-gold);
+  color: #b8860b;
   transition: all 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #daa520;
+  text-decoration: none;
+}
+
+/* 文章内容链接样式 */
+.post-content a {
+  color: #b8860b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.post-content a:hover {
+  color: #daa520;
+  text-decoration: none;
 }
 
 /* ===================================
    代码块
    =================================== */
 code, pre, .highlight {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
   border: 1px solid var(--border-light) !important;
   border-radius: 4px !important;
 }
@@ -1051,6 +1101,18 @@ code, pre, .highlight {
 pre, .highlight {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background: #2d2d2d !important;
+}
+
+code {
+  padding: 2px 6px;
+  background: #f0f0f0;
+  color: #e05252;
+}
+
+pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
 }
 
 /* ===================================
@@ -1244,10 +1306,11 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 .post-title {
+  font-family: 'Source Han Sans CN', '思源黑体', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  font-weight: bold;
   font-size: 28px;
   color: #000000;
   margin-bottom: 10px;
-  font-weight: 600;
 }
 
 .post-meta {
@@ -1261,10 +1324,11 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 .post-content h1, .post-content h2, .post-content h3 {
+  font-family: 'Source Han Sans CN', '思源黑体', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  font-weight: bold;
   color: #000000;
   margin-top: 30px;
   margin-bottom: 15px;
-  font-weight: 600;
 }
 
 .post-content p {

@@ -1,3 +1,15 @@
+{{- /* 字体引入 - 国内 CDN 加速 */ -}}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+{{- /* 霞鹜文楷 - 正文 */ -}}
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai@1.1.0/dist/LXGWWenKai-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
+{{- /* 思源黑体 Bold - 标题 */ -}}
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/source-han-sans-cn@1.0.0/dist/SourceHanSansCN-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+{{- /* JetBrains Mono - 代码 */ -}}
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/fonts/webfonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+
 {{- /* 全屏樱花飘落背景 */ -}}
 {{- if not .Params.disableSakura }}
 <script src="{{ "js/sakura.js" | absURL }}"></script>
