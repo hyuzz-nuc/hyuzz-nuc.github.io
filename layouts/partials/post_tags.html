@@ -1,0 +1,12 @@
+{{- if .Params.tags }}
+<div class="post-tags">
+  {{- range $i, $tag := .Params.tags }}
+  {{- $tagUrl := urlize $tag }}
+  <a href="{{ "/tags/" | relLangURL }}{{ $tagUrl }}/" class="post-tag">
+    <span class="tag-icon">🏷️</span>
+    <span>{{ $tag }}</span>
+  </a>
+  {{- if lt $i (sub (len $.Params.tags) 1) }}&nbsp;{{- end }}
+  {{- end }}
+</div>
+{{- end }}
