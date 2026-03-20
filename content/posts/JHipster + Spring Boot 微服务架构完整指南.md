@@ -1,7 +1,7 @@
 ---
 title: "JHipster + Spring Boot 微服务架构完整指南：Eureka、Ribbon、Hystrix、Liquibase、Feign 详解"
 date: 2026-02-08T14:00:00+08:00
-draft: true
+draft: false
 description: "JHipster 微服务架构深度解析，包含服务发现、负载均衡、熔断、数据库迁移、声明式服务等核心组件，附常见 Bug 解决方案"
 slug: "jhipster-microservices-complete-guide"
 tags: ["JHipster", "微服务", "Spring Boot"]
