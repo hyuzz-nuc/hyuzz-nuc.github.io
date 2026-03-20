@@ -206,3 +206,7 @@ Always respond in 中文
 - 整合而非孤立、增强而非替代、治理作为赋能者！： [AI 落地难？关键在于把握三大核心原则](https://www.hbr-caijing.com/#/article/detail?id=481889)
 - 同时使用超过三个 AI 工具，生产力反而会下降？： [龙虾卸载指南，就算是真的龙虾，也不是每个人都适合吃](https://xueqiu.com/2684655177/378834512)
 - "信任，但要核实"（Trust, but verify）: [从提问到行动，AI 驱动企业新范式](https://www.hbr-caijing.com/#/article/detail?id=481856)
+
+---
+
+**未经作者禁止转载！**

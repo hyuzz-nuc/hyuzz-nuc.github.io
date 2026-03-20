@@ -1,4 +1,4 @@
----
+﻿---
 title: "还在 ctrl cv 从飞书复制文档？教给你这个工具，一秒导出自用"
 date: 2026-03-07T14:00:00+08:00
 draft: false
@@ -84,3 +84,7 @@ feishu2md dl --wiki -o output_folder "https://xxx.feishu.cn/wiki/settings/123456
 # 下载到 E:\feishu2md\downloadFiles
 D:\tools\feishu2md\feishu2md.exe dl -o "E:\feishu2md\downloadFiles" "https://xxx.feishu.cn/docx/xxx"
 ```
+
+---
+
+**未经作者禁止转载！**
