@@ -229,7 +229,7 @@ body {
 
 .page-header h1 {
   font-size: 22px;
-  color: var(--primary-gold);
+  color: #000000;
   margin: 0;
   font-weight: 600;
 }
@@ -484,7 +484,7 @@ body {
 
 .widget-title {
   font-size: 15px;
-  color: var(--primary-gold);
+  color: #000000;
   margin: 0 0 14px 0;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border-light);
@@ -1103,7 +1103,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 
 .archive-year-title {
   font-size: 20px;
-  color: var(--primary-gold);
+  color: #000000;
   margin: 0 0 18px 0;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--border-light);
@@ -1245,7 +1245,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 
 .post-title {
   font-size: 28px;
-  color: var(--primary-gold);
+  color: #000000;
   margin-bottom: 10px;
   font-weight: 600;
 }
@@ -1261,7 +1261,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 .post-content h1, .post-content h2, .post-content h3 {
-  color: var(--primary-gold);
+  color: #000000;
   margin-top: 30px;
   margin-bottom: 15px;
   font-weight: 600;
@@ -1973,7 +1973,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 .post-toc h4 {
-  color: var(--primary-gold);
+  color: #000000;
   margin: 0;
   font-size: 16px;
   font-weight: 600;
@@ -2098,7 +2098,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 
 .related-posts-title {
   font-size: 18px;
-  color: var(--primary-gold);
+  color: #000000;
   margin: 0 0 20px 0;
   font-weight: 600;
 }
