@@ -88,3 +88,9 @@ D:\tools\feishu2md\feishu2md.exe dl -o "E:\feishu2md\downloadFiles" "https://xxx
 ---
 
 **未经作者禁止转载！**
+
+---
+
+**本文链接：** https://hyuzz-nuc.github.io/posts/hai-zai-crtl-cv-cong-fei-shu-fu-zhi-wen-dang-jiao-gei-ni-zhe-ge-gong-ju-yi-miao-dao-chu-zi-yong/
+
+**未经作者禁止转载！**

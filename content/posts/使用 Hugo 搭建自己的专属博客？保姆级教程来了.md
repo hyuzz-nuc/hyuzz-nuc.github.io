@@ -89,3 +89,9 @@ git push origin main
 ---
 
 **未经作者禁止转载！**
+
+---
+
+**本文链接：** https://hyuzz-nuc.github.io/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/
+
+**未经作者禁止转载！**

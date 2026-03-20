@@ -1,4 +1,4 @@
----
+﻿---
 title: "AI 在工作中提高可靠性和高效使用"
 date: 2026-03-13T14:00:00+08:00
 draft: false
@@ -208,5 +208,7 @@ Always respond in 中文
 - "信任，但要核实"（Trust, but verify）: [从提问到行动，AI 驱动企业新范式](https://www.hbr-caijing.com/#/article/detail?id=481856)
 
 ---
+
+**本文链接：** https://hyuzz-nuc.github.io/posts/ai-zai-gong-zuo-zhong-ti-gao-ke-kao-xing-he-gao-xiao-shi-yong/
 
 **未经作者禁止转载！**
