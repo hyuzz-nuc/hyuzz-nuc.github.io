@@ -1370,14 +1370,14 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
    文章表格样式 - 黑色边框
    =================================== */
 .post-content table {
-  width: 100%;
+  width: auto;
   max-width: 100%;
   margin: 20px 0;
   border-collapse: collapse;
   border: 2px solid #000000;
   background: transparent;
-  table-layout: fixed;
-  overflow: hidden;
+  display: table;
+  overflow-x: auto;
 }
 
 [data-theme="dark"] .post-content table {
@@ -1392,7 +1392,7 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   text-align: left;
   color: #000000;
   word-wrap: break-word;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 [data-theme="dark"] .post-content table thead th {
@@ -1420,6 +1420,16 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 
 [data-theme="dark"] .post-content table tr:nth-child(even) {
   background: #1f1f1f;
+}
+
+/* 表格容器 - 支持横向滚动 */
+.post-content .table-wrapper {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.post-content .table-wrapper table {
+  margin: 0;
 }
 
 /* ===================================
