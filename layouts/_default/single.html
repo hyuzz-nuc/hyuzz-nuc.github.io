@@ -1,121 +1,82 @@
 {{- define "main" }}
-
-<!-- 左右分栏布局 -->
-<div class="home-layout">
-  
-  <!-- 左侧文章详情 -->
-  <main class="main-content">
-    <article class="post-single">
-      <header class="post-header">
+<article class="post-single">
+  <header class="post-header">
+    <div class="post-meta">
+      {{- if .Site.Params.ShowBreadCrumbs }}
+      <div class="breadcrumbs">
         {{- partial "breadcrumbs.html" . }}
-        <h1 class="post-title">{{ .Title }}</h1>
-        {{- if .Description }}
-        <div class="post-description">{{ .Description }}</div>
-        {{- end }}
-        {{- if not (.Param "hideMeta") }}
-        <div class="post-meta">
-          {{- partial "post_meta.html" . -}}
-          <span style="margin-left: 10px;">📝 {{ .WordCount }} 字</span>
-          <span style="margin-left: 10px;">👁️ <span id="busuanzi_value_page_pv">-</span> 次阅读</span>
-        </div>
-        {{- end }}
-      </header>
-      
-      <!-- 文章目录（可折叠） -->
-      {{- if .TableOfContents }}
-      <div class="post-toc" style="margin-bottom: 30px; padding: 15px 20px; background: var(--bg-light); border: 2px solid var(--border-gold); border-radius: 8px;">
-        <div class="toc-header" onclick="toggleToc()" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
-          <h4 style="color: var(--primary-gold); margin: 0; font-size: 16px; font-weight: 600;">📑 文章目录</h4>
-          <span id="toc-toggle-icon" style="font-size: 18px; color: var(--primary-gold); transition: transform 0.3s ease;">▼</span>
-        </div>
-        <div id="toc-content" style="margin-top: 10px; max-height: 500px; overflow-y: auto; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 1;">
-          {{ .TableOfContents }}
-        </div>
       </div>
       {{- end }}
+    </div>
+    <h1 class="post-title">
+      {{ .Title }}
+      {{- if .Draft }}&nbsp;<span class="draft-label">DRAFT</span>{{- end }}
+    </h1>
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+      {{- partial "post_meta.html" . }}
+    </div>
+    {{- end }}
+  </header>
 
-      {{- if .Content }}
-      <div class="post-content">
-        {{ .Content }}
-      </div>
-      {{- end }}
-
-      <footer class="post-footer">
-        {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
-        {{- if .GetTerms $tags }}
-        <ul class="post-tags">
-          {{- range (.GetTerms $tags) }}
-          <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
-          {{- end }}
-        </ul>
-        {{- end }}
-      </footer>
-
-      <!-- Giscus 评论区 -->
-      <div class="giscus-comments" style="margin-top: 40px; padding-top: 20px; border-top: 1px dashed var(--border-light);">
-        <h4 style="color: var(--primary-gold); margin-bottom: 20px; font-size: 16px;">评论区</h4>
-        <script src="https://giscus.app/client.js"
-          data-repo="hyuzz-nuc/hyuzz-nuc.github.io"
-          data-repo-id="R_kgDORh6uuA"
-          data-category="Announcements"
-          data-category-id="DIC_kwDORh6uuM4C3_BA"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="preferred_color_scheme"
-          data-lang="zh-CN"
-          crossorigin="anonymous"
-          async>
-        </script>
-      </div>
-    </article>
-  </main>
-
-  <!-- 右侧边栏 -->
-  {{- partial "sidebar-right.html" . }}
-</div>
-
-<!-- 不蒜子页面统计脚本 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<!-- 微信二维码弹窗 -->
-<div id="wechat-modal" class="modal" onclick="hideWechatQR()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <span class="modal-close" onclick="hideWechatQR()">&times;</span>
-    <h4>微信扫一扫</h4>
-    <img src="/images/wechat-qrcode.png" alt="微信二维码" class="wechat-qr">
-    <p>加我好友，一起交流学习～</p>
+  {{- if .Params.cover.image }}
+  <div class="post-cover">
+    {{- partial "post_cover.html" . }}
   </div>
-</div>
+  {{- end }}
 
-<script>
-  function showWechatQR() {
-    document.getElementById('wechat-modal').style.display = 'flex';
-  }
+  {{- if .Params.ShowToc }}
+  <div class="post-toc">
+    {{- partial "toc.html" . }}
+  </div>
+  {{- end }}
 
-  function hideWechatQR() {
-    document.getElementById('wechat-modal').style.display = 'none';
-  }
+  <div class="post-content">
+    {{- if .Params.ShowFullText }}
+      {{ .Content }}
+    {{- else }}
+      {{ .Summary }}
+      {{- if .Truncated }}
+      <div class="read-more">
+        <a href="{{ .RelPermalink }}">阅读全文 »</a>
+      </div>
+      {{- end }}
+    {{- end }}
+  </div>
 
-  // 目录折叠功能
-  function toggleToc() {
-    const tocContent = document.getElementById('toc-content');
-    const toggleIcon = document.getElementById('toc-toggle-icon');
-    
-    if (tocContent.style.maxHeight === '0px' || tocContent.style.maxHeight === '0') {
-      // 展开
-      tocContent.style.maxHeight = '500px';
-      tocContent.style.opacity = '1';
-      toggleIcon.style.transform = 'rotate(0deg)';
-    } else {
-      // 折叠
-      tocContent.style.maxHeight = '0px';
-      tocContent.style.opacity = '0';
-      toggleIcon.style.transform = 'rotate(-90deg)';
-    }
-  }
-</script>
+  <footer class="post-footer">
+    {{- if .Params.tags }}
+    <div class="post-tags">
+      {{- partial "post_tags.html" . }}
+    </div>
+    {{- end }}
 
+    {{- if (.Param "ShowPostNavLinks") }}
+    <div class="post-nav">
+      {{- partial "post_nav_links.html" . }}
+    </div>
+    {{- end }}
+
+    {{- if and (.Param "ShowReadingTime") (not .IsHome) }}
+    <div class="reading-time">
+      <span>📖 阅读时间：{{ .ReadingTime }} 分钟</span>
+    </div>
+    {{- end }}
+
+    {{- if and (.Param "ShowWordCount") (not .IsHome) }}
+    <div class="word-count">
+      <span>📝 字数：{{ .WordCount }}</span>
+    </div>
+    {{- end }}
+
+    {{- if and site.Params.comments.enabled (ne .Params.comments false) }}
+    <div class="comments">
+      {{- partial "comments.html" . }}
+    </div>
+    {{- end }}
+
+    {{/* 推荐阅读 */}}
+    {{- partial "related-posts.html" . }}
+  </footer>
+</article>
 {{- end }}

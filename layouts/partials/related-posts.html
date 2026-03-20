@@ -1,0 +1,16 @@
+{{/* 推荐阅读 - 随机显示 3 篇文章 */}}
+{{- $current := .RelPermalink }}
+{{- $pages := where site.RegularPages "RelPermalink" "ne" $current | shuffle | first 3 }}
+{{- if $pages }}
+<div class="related-posts">
+  <h3 class="related-posts-title">📚 看看其他文章</h3>
+  <div class="related-posts-list">
+    {{- range $pages }}
+    <a href="{{ .RelPermalink }}" class="related-post-item">
+      <span class="related-post-title">{{ .Title }}</span>
+      <span class="related-post-date">{{ .Date.Format "2006-01-02" }}</span>
+    </a>
+    {{- end }}
+  </div>
+</div>
+{{- end }}

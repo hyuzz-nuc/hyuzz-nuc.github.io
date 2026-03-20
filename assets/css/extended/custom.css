@@ -2086,3 +2086,113 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 [data-theme="dark"] .post-description-small {
   color: var(--text-secondary);
 }
+
+/* ===================================
+   推荐阅读 - 看看其他文章
+   =================================== */
+.related-posts {
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 2px solid var(--border-gold);
+}
+
+.related-posts-title {
+  font-size: 18px;
+  color: var(--primary-gold);
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+.related-posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.related-post-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 15px 18px;
+  background: var(--bg-light);
+  border: 2px solid var(--border-gold);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.related-post-item:hover {
+  transform: translateX(5px);
+  border-color: var(--primary-gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.related-post-title {
+  font-size: 15px;
+  color: var(--text-dark);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.related-post-item:hover .related-post-title {
+  color: var(--primary-gold);
+}
+
+.related-post-date {
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+/* 深色模式推荐阅读 */
+[data-theme="dark"] .related-posts {
+  border-top-color: var(--border-primary);
+}
+
+[data-theme="dark"] .related-posts-title {
+  color: var(--primary-gold);
+}
+
+[data-theme="dark"] .related-post-item {
+  background: var(--bg-widget);
+  border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .related-post-item:hover {
+  border-color: var(--primary-gold);
+}
+
+[data-theme="dark"] .related-post-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .related-post-item:hover .related-post-title {
+  color: var(--primary-gold);
+}
+
+[data-theme="dark"] .related-post-date {
+  color: var(--text-secondary);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .related-posts {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+  
+  .related-posts-title {
+    font-size: 16px;
+  }
+  
+  .related-post-item {
+    padding: 12px 15px;
+  }
+  
+  .related-post-title {
+    font-size: 14px;
+  }
+  
+  .related-post-date {
+    font-size: 11px;
+  }
+}
