@@ -108,9 +108,9 @@ scrape_configs:
 
 **Grafana 大屏示例：**
 
-![Grafana 监控大屏](/posts/monitoring-metrics-p50-p95-grafana-prometheus/grafana-dashboard.png)
+![Grafana 监控大屏](/posts/monitoring-metrics-p50-p95-grafana-prometheus/grafana-dashboard.svg)
 
-> 上图：典型的 Grafana 监控面板，展示 P95/P99 响应时间曲线
+> 上图：典型的 Grafana 监控面板，展示 P95/P99 响应时间曲线 + Top 5 慢接口
 
 **Grafana 的 5 大优势：**
 
