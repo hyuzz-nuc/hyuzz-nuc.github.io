@@ -6,18 +6,18 @@
    全局配色 - 牛皮纸质感（日间模式）
    =================================== */
 :root {
-  --primary-gold: #b8860b;
-  --secondary-gold: #daa520;
-  --dark-gold: #8b6914;
-  --light-gold: #ffd700;
+  --primary-gold: #000000;
+  --secondary-gold: #000000;
+  --dark-gold: #000000;
+  --light-gold: #333333;
   --bg-cream: #f5f0e6;
   --bg-light: #f5f0e6;
   --bg-warm: #f5f0e6;
   --bg-paper: #f5f0e6;
   --bg-body: #f5f0e6;
-  --text-dark: #3c3831;
-  --text-gray: #6b6355;
-  --border-gold: #c4a777;
+  --text-dark: #000000;
+  --text-gray: #333333;
+  --border-gold: #cccccc;
   --border-light: #e0d5c1;
 }
 
