@@ -1367,6 +1367,56 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
 }
 
 /* ===================================
+   文章表格样式 - 黑色边框
+   =================================== */
+.post-content table {
+  width: 100%;
+  max-width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  border: 2px solid #000000;
+  background: transparent;
+}
+
+[data-theme="dark"] .post-content table {
+  border-color: #d0d0d0;
+}
+
+.post-content table thead th {
+  padding: 12px 15px;
+  border: 2px solid #000000;
+  background: #f0f0f0;
+  font-weight: 600;
+  text-align: left;
+  color: #000000;
+}
+
+[data-theme="dark"] .post-content table thead th {
+  border-color: #d0d0d0;
+  background: #2a2a2a;
+  color: #d0d0d0;
+}
+
+.post-content table tbody td {
+  padding: 10px 15px;
+  border: 2px solid #000000;
+  color: #000000;
+}
+
+[data-theme="dark"] .post-content table tbody td {
+  border-color: #d0d0d0;
+  color: #d0d0d0;
+}
+
+.post-content table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+[data-theme="dark"] .post-content table tr:nth-child(even) {
+  background: #1f1f1f;
+}
+
+/* ===================================
    移动端适配
    =================================== */
 /* ===================================
