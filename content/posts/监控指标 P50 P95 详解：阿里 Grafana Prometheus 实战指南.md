@@ -1,7 +1,7 @@
 ---
-title: "监控指标 P50 P95 详解：阿里 Grafana Prometheus 实战指南"
-date: 2026-03-20T16:40:00+08:00
-draft: true
+title: "监控指标 P50 P95 P99详解：阿里 Grafana Prometheus 实战指南"
+date: 2026-01-18T16:40:00+08:00
+draft: false
 description: "P50、P95、P99 到底是啥？Prometheus 怎么配置？Grafana 面板咋画？一篇讲清楚"
 slug: "monitoring-metrics-p50-p95-grafana-prometheus"
 tags: ["监控", "Prometheus", "Grafana", "P95", "运维"]
@@ -105,6 +105,75 @@ scrape_configs:
 ### 3.2 Grafana：数据可视化
 
 **Grafana** 就是个"画图表的"，把 Prometheus 采集的数据画成面板。
+
+**Grafana 大屏示例：**
+
+![Grafana 监控大屏](/posts/monitoring-metrics-p50-p95-grafana-prometheus/grafana-dashboard.png)
+
+> 上图：典型的 Grafana 监控面板，展示 P95/P99 响应时间曲线
+
+**Grafana 的 5 大优势：**
+
+| 优势 | 说明 | 实际体验 |
+|------|------|----------|
+| 📊 插件丰富 | 支持 40+ 数据源 | Prometheus、MySQL、ES、阿里云都能接 |
+| 🎨 面板美观 | 内置多种图表类型 | 折线图、柱状图、热力图、仪表盘随便选 |
+| 🔔 告警灵活 | 支持多通知渠道 | 钉钉、企业微信、短信、邮件都能发 |
+| 📱 移动端适配 | 响应式布局 | 手机上看监控也清晰 |
+| 🔌 模板变量 | 动态筛选数据 | 一个面板看所有服务，不用重复画 |
+
+**Grafana 使用技巧：**
+
+**技巧 1：用模板变量动态筛选**
+
+```promql
+# 定义变量：$service
+# 查询时自动替换
+rate(http_server_requests_seconds_bucket{job="$service"}[5m])
+```
+
+这样画一个面板，切换变量就能看不同服务，不用重复画！
+
+**技巧 2：用 Stat 面板展示当前值**
+
+P95 响应时间用 Stat 面板，直接显示当前值，配上颜色阈值：
+- 绿色：< 200ms
+- 黄色：200-500ms
+- 红色：> 500ms
+
+一眼就能看到当前状态！
+
+**技巧 3：用 Table 面板展示 Top N**
+
+```promql
+topk(10, rate(http_server_requests_seconds_count[5m]))
+```
+
+展示请求量最大的 10 个接口，快速定位热点。
+
+**技巧 4：用 Heatmap 看分布**
+
+```promql
+rate(http_server_requests_seconds_bucket[5m])
+```
+
+热力图能看到响应时间的分布情况，比单纯看 P95 更直观。
+
+**技巧 5：告警规则分组**
+
+```yaml
+# 按服务分组告警
+groups:
+  - name: api_alerts
+    rules:
+      - alert: 订单服务响应慢
+        expr: histogram_quantile(0.95, rate(http_server_requests_seconds_bucket{service="order"}[5m])) > 0.5
+        
+      - alert: 支付服务响应慢
+        expr: histogram_quantile(0.95, rate(http_server_requests_seconds_bucket{service="payment"}[5m])) > 0.3
+```
+
+不同服务设置不同阈值，核心服务告警更敏感！
 
 **核心概念：**
 
@@ -240,6 +309,44 @@ histogram_quantile(0.95,
 **第四步：保存**
 
 搞定！现在能看到每个接口的 P95 响应时间了。
+
+**Grafana 面板配置技巧：**
+
+**技巧 1：多面板对比**
+
+- 第一行：P50/P95/P99 三个面板并排
+- 第二行：请求量/QPS
+- 第三行：错误率
+
+一眼看清全貌！
+
+**技巧 2：用 Annotations 标记事件**
+
+```promql
+# 部署事件标注
+# 在面板上显示部署时间点，方便排查问题
+```
+
+**技巧 3：设置刷新间隔**
+
+- 开发环境：30s
+- 生产环境：1m
+- 大屏展示：5s
+
+别设太短，会增加 Prometheus 负担！
+
+**技巧 4：导出导入 Dashboard**
+
+画好的面板可以导出 JSON，分享给团队：
+```bash
+# 导出
+Dashboard Settings → JSON Model → Copy to clipboard
+
+# 导入
+Create → Import → 粘贴 JSON
+```
+
+阿里云 ARMS 内置的预设大盘也能导出复用！
 
 ---
 
