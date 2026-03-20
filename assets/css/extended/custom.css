@@ -481,15 +481,37 @@ body {
   white-space: nowrap;
 }
 
+/* 博客统计数字 - 彩虹渐变色 */
 .stat-value {
-  color: var(--primary-gold);
-  font-weight: 600;
-  font-size: 15px;
+  background: linear-gradient(90deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0, #22b8cf, #20c997, #51cf66, #94d82d, #ffd43b, #ff922b, #ff6b6b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  font-size: 16px;
+  animation: rainbow-flow 3s linear infinite;
 }
 
 .busuanzi-number {
-  color: var(--primary-gold);
-  font-weight: 600;
+  background: linear-gradient(90deg, #ff6b6b, #f06595, #cc5de8, #845ef7, #5c7cfa, #339af0, #22b8cf, #20c997, #51cf66, #94d82d, #ffd43b, #ff922b, #ff6b6b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  font-size: 16px;
+  animation: rainbow-flow 3s linear infinite;
+}
+
+/* 彩虹流动动画 */
+@keyframes rainbow-flow {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 /* ===================================
