@@ -5,6 +5,7 @@ draft: false
 tags: ["AI", "效率工具", "开发工具"]
 categories: ["技术分享"]
 description: "分享 AI 辅助编程工具的使用心得"
+slug: "ai-productivity-guide"
 ---
 
 ## 一、工具介绍及分享
@@ -209,6 +210,6 @@ Always respond in 中文
 
 ---
 
-**本文链接：** https://hyuzz-nuc.github.io/posts/ai-zai-gong-zuo-zhong-ti-gao-ke-kao-xing-he-gao-xiao-shi-yong/
+**本文链接：** https://hyuzz-nuc.github.io/posts/ai-productivity-guide/
 
 **未经作者禁止转载！**

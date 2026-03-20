@@ -3,6 +3,7 @@ title: "OpenClaw🦞 部署指南，排雷大全"
 date: 2026-03-08T14:00:00+08:00
 draft: false
 description: "快让我看看是谁还不会配置小龙虾！"
+slug: "openclaw-setup-guide"
 ---
 ## 一、前言
 
@@ -156,6 +157,6 @@ openclaw dashboard
 
 ---
 
-**本文链接：** https://hyuzz-nuc.github.io/posts/openclaw-bu-shu-zhi-nan-pai-lei-da-quan/
+**本文链接：** https://hyuzz-nuc.github.io/posts/openclaw-setup-guide/
 
 **未经作者禁止转载！**

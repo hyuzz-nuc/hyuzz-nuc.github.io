@@ -3,6 +3,7 @@ title: "还在 ctrl cv 从飞书复制文档？教给你这个工具，一秒导
 date: 2026-03-07T14:00:00+08:00
 draft: false
 description: "好用的工具分享！"
+slug: "feishu-export-tool-guide"
 ---
 
 ## 导引
@@ -91,6 +92,6 @@ D:\tools\feishu2md\feishu2md.exe dl -o "E:\feishu2md\downloadFiles" "https://xxx
 
 ---
 
-**本文链接：** https://hyuzz-nuc.github.io/posts/hai-zai-crtl-cv-cong-fei-shu-fu-zhi-wen-dang-jiao-gei-ni-zhe-ge-gong-ju-yi-miao-dao-chu-zi-yong/
+**本文链接：** https://hyuzz-nuc.github.io/posts/feishu-export-tool-guide/
 
 **未经作者禁止转载！**

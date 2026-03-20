@@ -3,6 +3,7 @@ title: "使用 Hugo 搭建自己的专属博客？保姆级教程来了"
 date: 2026-03-01T14:00:00+08:00
 draft: false
 description: "保姆级搭建博客，手把手教会你！"
+slug: "hugo-blog-setup-guide"
 ---
 
 
@@ -92,6 +93,6 @@ git push origin main
 
 ---
 
-**本文链接：** https://hyuzz-nuc.github.io/posts/shi-yong-hugo-da-jian-zi-ji-de-zhuan-shu-bo-ke-bao-mu-ji-jiao-cheng-lai-le/
+**本文链接：** https://hyuzz-nuc.github.io/posts/hugo-blog-setup-guide/
 
 **未经作者禁止转载！**
