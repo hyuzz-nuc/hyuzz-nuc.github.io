@@ -1376,6 +1376,8 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   border-collapse: collapse;
   border: 2px solid #000000;
   background: transparent;
+  table-layout: fixed;
+  overflow: hidden;
 }
 
 [data-theme="dark"] .post-content table {
@@ -1389,6 +1391,8 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   font-weight: 600;
   text-align: left;
   color: #000000;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 [data-theme="dark"] .post-content table thead th {
@@ -1401,6 +1405,8 @@ button:active, .btn:active, .button:active, .share-buttons button:active, .copy-
   padding: 10px 15px;
   border: 2px solid #000000;
   color: #000000;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 [data-theme="dark"] .post-content table tbody td {
