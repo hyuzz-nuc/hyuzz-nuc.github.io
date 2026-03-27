@@ -2,9 +2,9 @@
 title: "Docker + Docker Compose 完全指南（2026 版）"
 date: 2026-03-27T14:58:00+08:00
 draft: false
-tags: ["Docker", "容器化", "DevOps", "部署"]
+description: "什么2026年了，你还不会用docker?"
 slug: "docker-setup-guide"
-tags: ["docker", "效率工具","实战经验"]
+tags: ["Docker", "效率工具","实战经验"]
 categories: ["教程指南"]
 ---
 
