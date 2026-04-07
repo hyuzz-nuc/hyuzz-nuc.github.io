@@ -155,10 +155,6 @@ openclaw dashboard
 
 ---
 
-**未经作者禁止转载！**
-
----
-
 **本文链接：** https://hyuzz-nuc.github.io/posts/openclaw-setup-guide/
 
 **未经作者禁止转载！**
