@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" font-family="system-ui,-apple-system,sans-serif">
+  <rect width="700" height="420" fill="#0d1117" rx="12"/>
+  <text x="350" y="36" text-anchor="middle" fill="#e6edf3" font-size="18" font-weight="bold">Agent 核心架构：感知-规划-行动循环</text>
+  <!-- 中心 LLM -->
+  <circle cx="350" cy="210" r="60" fill="#1f2937" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="350" y="205" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="bold">LLM</text>
+  <text x="350" y="222" text-anchor="middle" fill="#8b949e" font-size="10">大脑</text>
+  <!-- 感知 -->
+  <rect x="30" y="170" width="120" height="80" rx="10" fill="#1f2937" stroke="#3b82f6" stroke-width="2"/>
+  <text x="90" y="205" text-anchor="middle" fill="#3b82f6" font-size="13" font-weight="bold">感知</text>
+  <text x="90" y="222" text-anchor="middle" fill="#8b949e" font-size="10">Perception</text>
+  <!-- 规划 -->
+  <rect x="290" y="50" width="120" height="70" rx="10" fill="#1f2937" stroke="#10b981" stroke-width="2"/>
+  <text x="350" y="82" text-anchor="middle" fill="#10b981" font-size="13" font-weight="bold">规划</text>
+  <text x="350" y="99" text-anchor="middle" fill="#8b949e" font-size="10">Planning</text>
+  <!-- 行动 -->
+  <rect x="550" y="170" width="120" height="80" rx="10" fill="#1f2937" stroke="#ef4444" stroke-width="2"/>
+  <text x="610" y="205" text-anchor="middle" fill="#ef4444" font-size="13" font-weight="bold">行动</text>
+  <text x="610" y="222" text-anchor="middle" fill="#8b949e" font-size="10">Action</text>
+  <!-- 记忆 -->
+  <rect x="290" y="310" width="120" height="70" rx="10" fill="#1f2937" stroke="#a855f7" stroke-width="2"/>
+  <text x="350" y="342" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="bold">记忆</text>
+  <text x="350" y="359" text-anchor="middle" fill="#8b949e" font-size="10">Memory</text>
+  <!-- 箭头 -->
+  <defs><marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#58a6ff"/></marker></defs>
+  <line x1="150" y1="210" x2="288" y2="210" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#a1)"/>
+  <line x1="350" y1="120" x2="350" y2="148" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#a1)"/>
+  <line x1="412" y1="210" x2="548" y2="210" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#a1)"/>
+  <line x1="350" y1="272" x2="350" y2="308" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#a1)"/>
+  <!-- 标签 -->
+  <text x="215" y="200" text-anchor="middle" fill="#8b949e" font-size="9">输入</text>
+  <text x="365" y="140" text-anchor="middle" fill="#8b949e" font-size="9">思考</text>
+  <text x="480" y="200" text-anchor="middle" fill="#8b949e" font-size="9">执行</text>
+  <text x="365" y="295" text-anchor="middle" fill="#8b949e" font-size="9">存储</text>
+  <!-- 反馈循环 -->
+  <path d="M610 252 Q610 380 350 380 Q90 380 90 252" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a1)"/>
+  <text x="350" y="400" text-anchor="middle" fill="#f59e0b" font-size="10">观察反馈 → 重新规划</text>
+  <!-- 工具列表 -->
+  <rect x="540" y="290" width="140" height="100" rx="8" fill="#1f2937" stroke="#30363d" stroke-width="1"/>
+  <text x="610" y="312" text-anchor="middle" fill="#c9d1d9" font-size="11" font-weight="bold">可用工具</text>
+  <text x="610" y="332" text-anchor="middle" fill="#8b949e" font-size="9">搜索 / 代码执行</text>
+  <text x="610" y="348" text-anchor="middle" fill="#8b949e" font-size="9">API 调用 / 文件读写</text>
+  <text x="610" y="364" text-anchor="middle" fill="#8b949e" font-size="9">数据库查询 / 计算</text>
+  <text x="610" y="380" text-anchor="middle" fill="#8b949e" font-size="9">浏览器 / 邮件</text>
+  <line x1="610" y1="252" x2="610" y2="288" stroke="#58a6ff" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#a1)"/>
+</svg>
